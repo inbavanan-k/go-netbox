@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceTypeRequestDefaultPlatform - struct for DeviceTypeRequestDefaultPlatform
 type DeviceTypeRequestDefaultPlatform struct {
 	BriefPlatformRequest *BriefPlatformRequest
-	Int32                *int32
+	Int32 *int32
 }
 
 // BriefPlatformRequestAsDeviceTypeRequestDefaultPlatform is a convenience function that returns BriefPlatformRequest wrapped in DeviceTypeRequestDefaultPlatform
@@ -36,6 +35,7 @@ func Int32AsDeviceTypeRequestDefaultPlatform(v *int32) DeviceTypeRequestDefaultP
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceTypeRequestDefaultPlatform) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src DeviceTypeRequestDefaultPlatform) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceTypeRequestDefaultPlatform) GetActualInstance() interface{} {
+func (obj *DeviceTypeRequestDefaultPlatform) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableDeviceTypeRequestDefaultPlatform) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

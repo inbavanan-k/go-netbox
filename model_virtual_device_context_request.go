@@ -20,17 +20,17 @@ var _ MappedNullable = &VirtualDeviceContextRequest{}
 
 // VirtualDeviceContextRequest Adds support for custom fields and tags.
 type VirtualDeviceContextRequest struct {
-	Name                 string                                           `json:"name"`
-	Device               BriefInterfaceRequestDevice                      `json:"device"`
-	Identifier           NullableInt32                                    `json:"identifier,omitempty"`
-	Tenant               NullableASNRangeRequestTenant                    `json:"tenant,omitempty"`
-	PrimaryIp4           NullableDeviceWithConfigContextRequestPrimaryIp4 `json:"primary_ip4,omitempty"`
-	PrimaryIp6           NullableDeviceWithConfigContextRequestPrimaryIp4 `json:"primary_ip6,omitempty"`
-	Status               PatchedWritableVirtualDeviceContextRequestStatus `json:"status"`
-	Description          *string                                          `json:"description,omitempty"`
-	Comments             *string                                          `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                               `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                           `json:"custom_fields,omitempty"`
+	Name string `json:"name"`
+	Device BriefInterfaceRequestDevice `json:"device"`
+	Identifier NullableInt32 `json:"identifier,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	PrimaryIp4 NullableDeviceWithConfigContextRequestPrimaryIp4 `json:"primary_ip4,omitempty"`
+	PrimaryIp6 NullableDeviceWithConfigContextRequestPrimaryIp4 `json:"primary_ip6,omitempty"`
+	Status PatchedWritableVirtualDeviceContextRequestStatus `json:"status"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,6 +80,7 @@ func (o *VirtualDeviceContextRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetDevice returns the Device field value
 func (o *VirtualDeviceContextRequest) GetDevice() BriefInterfaceRequestDevice {
 	if o == nil {
@@ -103,6 +104,7 @@ func (o *VirtualDeviceContextRequest) GetDeviceOk() (*BriefInterfaceRequestDevic
 func (o *VirtualDeviceContextRequest) SetDevice(v BriefInterfaceRequestDevice) {
 	o.Device = v
 }
+
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualDeviceContextRequest) GetIdentifier() int32 {
@@ -136,7 +138,6 @@ func (o *VirtualDeviceContextRequest) HasIdentifier() bool {
 func (o *VirtualDeviceContextRequest) SetIdentifier(v int32) {
 	o.Identifier.Set(&v)
 }
-
 // SetIdentifierNil sets the value for Identifier to be an explicit nil
 func (o *VirtualDeviceContextRequest) SetIdentifierNil() {
 	o.Identifier.Set(nil)
@@ -179,7 +180,6 @@ func (o *VirtualDeviceContextRequest) HasTenant() bool {
 func (o *VirtualDeviceContextRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *VirtualDeviceContextRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -222,7 +222,6 @@ func (o *VirtualDeviceContextRequest) HasPrimaryIp4() bool {
 func (o *VirtualDeviceContextRequest) SetPrimaryIp4(v DeviceWithConfigContextRequestPrimaryIp4) {
 	o.PrimaryIp4.Set(&v)
 }
-
 // SetPrimaryIp4Nil sets the value for PrimaryIp4 to be an explicit nil
 func (o *VirtualDeviceContextRequest) SetPrimaryIp4Nil() {
 	o.PrimaryIp4.Set(nil)
@@ -265,7 +264,6 @@ func (o *VirtualDeviceContextRequest) HasPrimaryIp6() bool {
 func (o *VirtualDeviceContextRequest) SetPrimaryIp6(v DeviceWithConfigContextRequestPrimaryIp4) {
 	o.PrimaryIp6.Set(&v)
 }
-
 // SetPrimaryIp6Nil sets the value for PrimaryIp6 to be an explicit nil
 func (o *VirtualDeviceContextRequest) SetPrimaryIp6Nil() {
 	o.PrimaryIp6.Set(nil)
@@ -299,6 +297,7 @@ func (o *VirtualDeviceContextRequest) GetStatusOk() (*PatchedWritableVirtualDevi
 func (o *VirtualDeviceContextRequest) SetStatus(v PatchedWritableVirtualDeviceContextRequestStatus) {
 	o.Status = v
 }
+
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *VirtualDeviceContextRequest) GetDescription() string {
@@ -429,7 +428,7 @@ func (o *VirtualDeviceContextRequest) SetCustomFields(v map[string]interface{}) 
 }
 
 func (o VirtualDeviceContextRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -485,31 +484,32 @@ func (o *VirtualDeviceContextRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -578,3 +578,5 @@ func (v *NullableVirtualDeviceContextRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

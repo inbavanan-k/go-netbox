@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceWithConfigContextRequestSite - struct for DeviceWithConfigContextRequestSite
 type DeviceWithConfigContextRequestSite struct {
 	BriefSiteRequest *BriefSiteRequest
-	Int32            *int32
+	Int32 *int32
 }
 
 // BriefSiteRequestAsDeviceWithConfigContextRequestSite is a convenience function that returns BriefSiteRequest wrapped in DeviceWithConfigContextRequestSite
@@ -36,6 +35,7 @@ func Int32AsDeviceWithConfigContextRequestSite(v *int32) DeviceWithConfigContext
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceWithConfigContextRequestSite) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src DeviceWithConfigContextRequestSite) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceWithConfigContextRequestSite) GetActualInstance() interface{} {
+func (obj *DeviceWithConfigContextRequestSite) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableDeviceWithConfigContextRequestSite) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

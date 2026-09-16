@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableWirelessLANRequestGroup - struct for PatchedWritableWirelessLANRequestGroup
 type PatchedWritableWirelessLANRequestGroup struct {
 	BriefWirelessLANGroupRequest *BriefWirelessLANGroupRequest
-	Int32                        *int32
+	Int32 *int32
 }
 
 // BriefWirelessLANGroupRequestAsPatchedWritableWirelessLANRequestGroup is a convenience function that returns BriefWirelessLANGroupRequest wrapped in PatchedWritableWirelessLANRequestGroup
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableWirelessLANRequestGroup(v *int32) PatchedWritableWire
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableWirelessLANRequestGroup) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedWritableWirelessLANRequestGroup) MarshalJSON() ([]byte, error) 
 }
 
 // Get the actual instance
-func (obj *PatchedWritableWirelessLANRequestGroup) GetActualInstance() interface{} {
+func (obj *PatchedWritableWirelessLANRequestGroup) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedWritableWirelessLANRequestGroup) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

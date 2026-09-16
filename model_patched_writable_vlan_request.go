@@ -19,20 +19,20 @@ var _ MappedNullable = &PatchedWritableVLANRequest{}
 
 // PatchedWritableVLANRequest Adds support for custom fields and tags.
 type PatchedWritableVLANRequest struct {
-	Site  NullablePatchedWritableVLANRequestSite  `json:"site,omitempty"`
+	Site NullablePatchedWritableVLANRequestSite `json:"site,omitempty"`
 	Group NullablePatchedWritableVLANRequestGroup `json:"group,omitempty"`
 	// Numeric VLAN ID (1-4094)
-	Vid                  *int32                            `json:"vid,omitempty"`
-	Name                 *string                           `json:"name,omitempty"`
-	Tenant               NullableASNRangeRequestTenant     `json:"tenant,omitempty"`
-	Status               *PatchedWritableVLANRequestStatus `json:"status,omitempty"`
-	Role                 NullableIPRangeRequestRole        `json:"role,omitempty"`
-	Description          *string                           `json:"description,omitempty"`
-	QinqRole             NullableQInQRole                  `json:"qinq_role,omitempty"`
-	QinqSvlan            NullableInt32                     `json:"qinq_svlan,omitempty"`
-	Comments             *string                           `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}            `json:"custom_fields,omitempty"`
+	Vid *int32 `json:"vid,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	Status *PatchedWritableVLANRequestStatus `json:"status,omitempty"`
+	Role NullableIPRangeRequestRole `json:"role,omitempty"`
+	Description *string `json:"description,omitempty"`
+	QinqRole NullableQInQRole `json:"qinq_role,omitempty"`
+	QinqSvlan NullableInt32 `json:"qinq_svlan,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -87,7 +87,6 @@ func (o *PatchedWritableVLANRequest) HasSite() bool {
 func (o *PatchedWritableVLANRequest) SetSite(v PatchedWritableVLANRequestSite) {
 	o.Site.Set(&v)
 }
-
 // SetSiteNil sets the value for Site to be an explicit nil
 func (o *PatchedWritableVLANRequest) SetSiteNil() {
 	o.Site.Set(nil)
@@ -130,7 +129,6 @@ func (o *PatchedWritableVLANRequest) HasGroup() bool {
 func (o *PatchedWritableVLANRequest) SetGroup(v PatchedWritableVLANRequestGroup) {
 	o.Group.Set(&v)
 }
-
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *PatchedWritableVLANRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -237,7 +235,6 @@ func (o *PatchedWritableVLANRequest) HasTenant() bool {
 func (o *PatchedWritableVLANRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableVLANRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -312,7 +309,6 @@ func (o *PatchedWritableVLANRequest) HasRole() bool {
 func (o *PatchedWritableVLANRequest) SetRole(v IPRangeRequestRole) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *PatchedWritableVLANRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -387,7 +383,6 @@ func (o *PatchedWritableVLANRequest) HasQinqRole() bool {
 func (o *PatchedWritableVLANRequest) SetQinqRole(v QInQRole) {
 	o.QinqRole.Set(&v)
 }
-
 // SetQinqRoleNil sets the value for QinqRole to be an explicit nil
 func (o *PatchedWritableVLANRequest) SetQinqRoleNil() {
 	o.QinqRole.Set(nil)
@@ -430,7 +425,6 @@ func (o *PatchedWritableVLANRequest) HasQinqSvlan() bool {
 func (o *PatchedWritableVLANRequest) SetQinqSvlan(v int32) {
 	o.QinqSvlan.Set(&v)
 }
-
 // SetQinqSvlanNil sets the value for QinqSvlan to be an explicit nil
 func (o *PatchedWritableVLANRequest) SetQinqSvlanNil() {
 	o.QinqSvlan.Set(nil)
@@ -538,7 +532,7 @@ func (o *PatchedWritableVLANRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o PatchedWritableVLANRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -662,3 +656,5 @@ func (v *NullablePatchedWritableVLANRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

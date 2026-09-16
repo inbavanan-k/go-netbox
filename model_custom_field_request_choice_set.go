@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // CustomFieldRequestChoiceSet - struct for CustomFieldRequestChoiceSet
 type CustomFieldRequestChoiceSet struct {
 	BriefCustomFieldChoiceSetRequest *BriefCustomFieldChoiceSetRequest
-	Int32                            *int32
+	Int32 *int32
 }
 
 // BriefCustomFieldChoiceSetRequestAsCustomFieldRequestChoiceSet is a convenience function that returns BriefCustomFieldChoiceSetRequest wrapped in CustomFieldRequestChoiceSet
@@ -36,6 +35,7 @@ func Int32AsCustomFieldRequestChoiceSet(v *int32) CustomFieldRequestChoiceSet {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CustomFieldRequestChoiceSet) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src CustomFieldRequestChoiceSet) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CustomFieldRequestChoiceSet) GetActualInstance() interface{} {
+func (obj *CustomFieldRequestChoiceSet) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableCustomFieldRequestChoiceSet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

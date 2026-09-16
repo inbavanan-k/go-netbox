@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // IPSecProfileRequestIpsecPolicy - struct for IPSecProfileRequestIpsecPolicy
 type IPSecProfileRequestIpsecPolicy struct {
 	BriefIPSecPolicyRequest *BriefIPSecPolicyRequest
-	Int32                   *int32
+	Int32 *int32
 }
 
 // BriefIPSecPolicyRequestAsIPSecProfileRequestIpsecPolicy is a convenience function that returns BriefIPSecPolicyRequest wrapped in IPSecProfileRequestIpsecPolicy
@@ -36,6 +35,7 @@ func Int32AsIPSecProfileRequestIpsecPolicy(v *int32) IPSecProfileRequestIpsecPol
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *IPSecProfileRequestIpsecPolicy) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src IPSecProfileRequestIpsecPolicy) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *IPSecProfileRequestIpsecPolicy) GetActualInstance() interface{} {
+func (obj *IPSecProfileRequestIpsecPolicy) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableIPSecProfileRequestIpsecPolicy) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

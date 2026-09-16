@@ -19,12 +19,12 @@ var _ MappedNullable = &PatchedModuleTypeProfileRequest{}
 
 // PatchedModuleTypeProfileRequest Adds support for custom fields and tags.
 type PatchedModuleTypeProfileRequest struct {
-	Name                 *string                `json:"name,omitempty"`
-	Description          *string                `json:"description,omitempty"`
-	Schema               interface{}            `json:"schema,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Schema interface{} `json:"schema,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -241,7 +241,7 @@ func (o *PatchedModuleTypeProfileRequest) SetCustomFields(v map[string]interface
 }
 
 func (o PatchedModuleTypeProfileRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -337,3 +337,5 @@ func (v *NullablePatchedModuleTypeProfileRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

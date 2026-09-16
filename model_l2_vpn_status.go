@@ -19,8 +19,8 @@ var _ MappedNullable = &L2VPNStatus{}
 
 // L2VPNStatus struct for L2VPNStatus
 type L2VPNStatus struct {
-	Value                *L2VPNStatusValue `json:"value,omitempty"`
-	Label                *L2VPNStatusLabel `json:"label,omitempty"`
+	Value *L2VPNStatusValue `json:"value,omitempty"`
+	Label *L2VPNStatusLabel `json:"label,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,7 @@ func (o *L2VPNStatus) SetLabel(v L2VPNStatusLabel) {
 }
 
 func (o L2VPNStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,3 +188,5 @@ func (v *NullableL2VPNStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

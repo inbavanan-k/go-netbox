@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceRoleRequestConfigTemplate - struct for DeviceRoleRequestConfigTemplate
 type DeviceRoleRequestConfigTemplate struct {
 	BriefConfigTemplateRequest *BriefConfigTemplateRequest
-	Int32                      *int32
+	Int32 *int32
 }
 
 // BriefConfigTemplateRequestAsDeviceRoleRequestConfigTemplate is a convenience function that returns BriefConfigTemplateRequest wrapped in DeviceRoleRequestConfigTemplate
@@ -36,6 +35,7 @@ func Int32AsDeviceRoleRequestConfigTemplate(v *int32) DeviceRoleRequestConfigTem
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceRoleRequestConfigTemplate) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src DeviceRoleRequestConfigTemplate) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceRoleRequestConfigTemplate) GetActualInstance() interface{} {
+func (obj *DeviceRoleRequestConfigTemplate) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableDeviceRoleRequestConfigTemplate) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

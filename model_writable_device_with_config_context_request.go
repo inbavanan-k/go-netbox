@@ -20,41 +20,41 @@ var _ MappedNullable = &WritableDeviceWithConfigContextRequest{}
 
 // WritableDeviceWithConfigContextRequest Adds support for custom fields and tags.
 type WritableDeviceWithConfigContextRequest struct {
-	Name       NullableString                           `json:"name,omitempty"`
-	DeviceType DeviceBayTemplateRequestDeviceType       `json:"device_type"`
-	Role       DeviceWithConfigContextRequestRole       `json:"role"`
-	Tenant     NullableASNRangeRequestTenant            `json:"tenant,omitempty"`
-	Platform   NullableDeviceTypeRequestDefaultPlatform `json:"platform,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	DeviceType DeviceBayTemplateRequestDeviceType `json:"device_type"`
+	Role DeviceWithConfigContextRequestRole `json:"role"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	Platform NullableDeviceTypeRequestDefaultPlatform `json:"platform,omitempty"`
 	// Chassis serial number, assigned by the manufacturer
 	Serial *string `json:"serial,omitempty"`
 	// A unique tag used to identify this device
-	AssetTag NullableString                                 `json:"asset_tag,omitempty"`
-	Site     DeviceWithConfigContextRequestSite             `json:"site"`
+	AssetTag NullableString `json:"asset_tag,omitempty"`
+	Site DeviceWithConfigContextRequestSite `json:"site"`
 	Location NullableDeviceWithConfigContextRequestLocation `json:"location,omitempty"`
-	Rack     NullableDeviceWithConfigContextRequestRack     `json:"rack,omitempty"`
-	Position NullableFloat64                                `json:"position,omitempty"`
-	Face     NullableRackFace1                              `json:"face,omitempty"`
+	Rack NullableDeviceWithConfigContextRequestRack `json:"rack,omitempty"`
+	Position NullableFloat64 `json:"position,omitempty"`
+	Face NullableRackFace1 `json:"face,omitempty"`
 	// GPS coordinate in decimal format (xx.yyyyyy)
 	Latitude NullableFloat64 `json:"latitude,omitempty"`
 	// GPS coordinate in decimal format (xx.yyyyyy)
-	Longitude      NullableFloat64                                      `json:"longitude,omitempty"`
-	Status         *DeviceStatusValue                                   `json:"status,omitempty"`
-	Airflow        NullableDeviceTypeRequestAirflow                     `json:"airflow,omitempty"`
-	PrimaryIp4     NullableDeviceWithConfigContextRequestPrimaryIp4     `json:"primary_ip4,omitempty"`
-	PrimaryIp6     NullableDeviceWithConfigContextRequestPrimaryIp4     `json:"primary_ip6,omitempty"`
-	OobIp          NullableDeviceWithConfigContextRequestPrimaryIp4     `json:"oob_ip,omitempty"`
-	Cluster        NullableDeviceWithConfigContextRequestCluster        `json:"cluster,omitempty"`
+	Longitude NullableFloat64 `json:"longitude,omitempty"`
+	Status *DeviceStatusValue `json:"status,omitempty"`
+	Airflow NullableDeviceTypeRequestAirflow `json:"airflow,omitempty"`
+	PrimaryIp4 NullableDeviceWithConfigContextRequestPrimaryIp4 `json:"primary_ip4,omitempty"`
+	PrimaryIp6 NullableDeviceWithConfigContextRequestPrimaryIp4 `json:"primary_ip6,omitempty"`
+	OobIp NullableDeviceWithConfigContextRequestPrimaryIp4 `json:"oob_ip,omitempty"`
+	Cluster NullableDeviceWithConfigContextRequestCluster `json:"cluster,omitempty"`
 	VirtualChassis NullableDeviceWithConfigContextRequestVirtualChassis `json:"virtual_chassis,omitempty"`
-	VcPosition     NullableInt32                                        `json:"vc_position,omitempty"`
+	VcPosition NullableInt32 `json:"vc_position,omitempty"`
 	// Virtual chassis master election priority
-	VcPriority     NullableInt32                           `json:"vc_priority,omitempty"`
-	Description    *string                                 `json:"description,omitempty"`
-	Comments       *string                                 `json:"comments,omitempty"`
+	VcPriority NullableInt32 `json:"vc_priority,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
 	ConfigTemplate NullableDeviceRoleRequestConfigTemplate `json:"config_template,omitempty"`
 	// Local config context data takes precedence over source contexts in the final rendered config context
-	LocalContextData     interface{}            `json:"local_context_data,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	LocalContextData interface{} `json:"local_context_data,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,7 +112,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasName() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -147,6 +146,7 @@ func (o *WritableDeviceWithConfigContextRequest) SetDeviceType(v DeviceBayTempla
 	o.DeviceType = v
 }
 
+
 // GetRole returns the Role field value
 func (o *WritableDeviceWithConfigContextRequest) GetRole() DeviceWithConfigContextRequestRole {
 	if o == nil {
@@ -170,6 +170,7 @@ func (o *WritableDeviceWithConfigContextRequest) GetRoleOk() (*DeviceWithConfigC
 func (o *WritableDeviceWithConfigContextRequest) SetRole(v DeviceWithConfigContextRequestRole) {
 	o.Role = v
 }
+
 
 // GetTenant returns the Tenant field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableDeviceWithConfigContextRequest) GetTenant() ASNRangeRequestTenant {
@@ -203,7 +204,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasTenant() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -246,7 +246,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasPlatform() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetPlatform(v DeviceTypeRequestDefaultPlatform) {
 	o.Platform.Set(&v)
 }
-
 // SetPlatformNil sets the value for Platform to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetPlatformNil() {
 	o.Platform.Set(nil)
@@ -321,7 +320,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasAssetTag() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetAssetTag(v string) {
 	o.AssetTag.Set(&v)
 }
-
 // SetAssetTagNil sets the value for AssetTag to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetAssetTagNil() {
 	o.AssetTag.Set(nil)
@@ -356,6 +354,7 @@ func (o *WritableDeviceWithConfigContextRequest) SetSite(v DeviceWithConfigConte
 	o.Site = v
 }
 
+
 // GetLocation returns the Location field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableDeviceWithConfigContextRequest) GetLocation() DeviceWithConfigContextRequestLocation {
 	if o == nil || IsNil(o.Location.Get()) {
@@ -388,7 +387,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasLocation() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetLocation(v DeviceWithConfigContextRequestLocation) {
 	o.Location.Set(&v)
 }
-
 // SetLocationNil sets the value for Location to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetLocationNil() {
 	o.Location.Set(nil)
@@ -431,7 +429,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasRack() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetRack(v DeviceWithConfigContextRequestRack) {
 	o.Rack.Set(&v)
 }
-
 // SetRackNil sets the value for Rack to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetRackNil() {
 	o.Rack.Set(nil)
@@ -474,7 +471,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasPosition() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetPosition(v float64) {
 	o.Position.Set(&v)
 }
-
 // SetPositionNil sets the value for Position to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetPositionNil() {
 	o.Position.Set(nil)
@@ -517,7 +513,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasFace() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetFace(v RackFace1) {
 	o.Face.Set(&v)
 }
-
 // SetFaceNil sets the value for Face to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetFaceNil() {
 	o.Face.Set(nil)
@@ -560,7 +555,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasLatitude() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetLatitude(v float64) {
 	o.Latitude.Set(&v)
 }
-
 // SetLatitudeNil sets the value for Latitude to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetLatitudeNil() {
 	o.Latitude.Set(nil)
@@ -603,7 +597,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasLongitude() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetLongitude(v float64) {
 	o.Longitude.Set(&v)
 }
-
 // SetLongitudeNil sets the value for Longitude to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetLongitudeNil() {
 	o.Longitude.Set(nil)
@@ -678,7 +671,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasAirflow() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetAirflow(v DeviceTypeRequestAirflow) {
 	o.Airflow.Set(&v)
 }
-
 // SetAirflowNil sets the value for Airflow to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetAirflowNil() {
 	o.Airflow.Set(nil)
@@ -721,7 +713,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasPrimaryIp4() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetPrimaryIp4(v DeviceWithConfigContextRequestPrimaryIp4) {
 	o.PrimaryIp4.Set(&v)
 }
-
 // SetPrimaryIp4Nil sets the value for PrimaryIp4 to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetPrimaryIp4Nil() {
 	o.PrimaryIp4.Set(nil)
@@ -764,7 +755,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasPrimaryIp6() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetPrimaryIp6(v DeviceWithConfigContextRequestPrimaryIp4) {
 	o.PrimaryIp6.Set(&v)
 }
-
 // SetPrimaryIp6Nil sets the value for PrimaryIp6 to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetPrimaryIp6Nil() {
 	o.PrimaryIp6.Set(nil)
@@ -807,7 +797,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasOobIp() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetOobIp(v DeviceWithConfigContextRequestPrimaryIp4) {
 	o.OobIp.Set(&v)
 }
-
 // SetOobIpNil sets the value for OobIp to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetOobIpNil() {
 	o.OobIp.Set(nil)
@@ -850,7 +839,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasCluster() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetCluster(v DeviceWithConfigContextRequestCluster) {
 	o.Cluster.Set(&v)
 }
-
 // SetClusterNil sets the value for Cluster to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetClusterNil() {
 	o.Cluster.Set(nil)
@@ -893,7 +881,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasVirtualChassis() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetVirtualChassis(v DeviceWithConfigContextRequestVirtualChassis) {
 	o.VirtualChassis.Set(&v)
 }
-
 // SetVirtualChassisNil sets the value for VirtualChassis to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetVirtualChassisNil() {
 	o.VirtualChassis.Set(nil)
@@ -936,7 +923,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasVcPosition() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetVcPosition(v int32) {
 	o.VcPosition.Set(&v)
 }
-
 // SetVcPositionNil sets the value for VcPosition to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetVcPositionNil() {
 	o.VcPosition.Set(nil)
@@ -979,7 +965,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasVcPriority() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetVcPriority(v int32) {
 	o.VcPriority.Set(&v)
 }
-
 // SetVcPriorityNil sets the value for VcPriority to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetVcPriorityNil() {
 	o.VcPriority.Set(nil)
@@ -1086,7 +1071,6 @@ func (o *WritableDeviceWithConfigContextRequest) HasConfigTemplate() bool {
 func (o *WritableDeviceWithConfigContextRequest) SetConfigTemplate(v DeviceRoleRequestConfigTemplate) {
 	o.ConfigTemplate.Set(&v)
 }
-
 // SetConfigTemplateNil sets the value for ConfigTemplate to be an explicit nil
 func (o *WritableDeviceWithConfigContextRequest) SetConfigTemplateNil() {
 	o.ConfigTemplate.Set(nil)
@@ -1195,7 +1179,7 @@ func (o *WritableDeviceWithConfigContextRequest) SetCustomFields(v map[string]in
 }
 
 func (o WritableDeviceWithConfigContextRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1305,31 +1289,32 @@ func (o *WritableDeviceWithConfigContextRequest) UnmarshalJSON(data []byte) (err
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -1416,3 +1401,5 @@ func (v *NullableWritableDeviceWithConfigContextRequest) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

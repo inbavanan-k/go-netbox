@@ -20,23 +20,23 @@ var _ MappedNullable = &VMInterfaceRequest{}
 
 // VMInterfaceRequest Adds support for custom fields and tags.
 type VMInterfaceRequest struct {
-	VirtualMachine        PatchedVirtualDiskRequestVirtualMachine       `json:"virtual_machine"`
-	Name                  string                                        `json:"name"`
-	Enabled               *bool                                         `json:"enabled,omitempty"`
-	Parent                NullableNestedVMInterfaceRequest              `json:"parent,omitempty"`
-	Bridge                NullableNestedVMInterfaceRequest              `json:"bridge,omitempty"`
-	Mtu                   NullableInt32                                 `json:"mtu,omitempty"`
-	PrimaryMacAddress     NullableInterfaceRequestPrimaryMacAddress     `json:"primary_mac_address,omitempty"`
-	Description           *string                                       `json:"description,omitempty"`
-	Mode                  *InterfaceModeValue                           `json:"mode,omitempty"`
-	UntaggedVlan          NullableInterfaceRequestUntaggedVlan          `json:"untagged_vlan,omitempty"`
-	TaggedVlans           []int32                                       `json:"tagged_vlans,omitempty"`
-	QinqSvlan             NullableInterfaceRequestUntaggedVlan          `json:"qinq_svlan,omitempty"`
+	VirtualMachine PatchedVirtualDiskRequestVirtualMachine `json:"virtual_machine"`
+	Name string `json:"name"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Parent NullableNestedVMInterfaceRequest `json:"parent,omitempty"`
+	Bridge NullableNestedVMInterfaceRequest `json:"bridge,omitempty"`
+	Mtu NullableInt32 `json:"mtu,omitempty"`
+	PrimaryMacAddress NullableInterfaceRequestPrimaryMacAddress `json:"primary_mac_address,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Mode *InterfaceModeValue `json:"mode,omitempty"`
+	UntaggedVlan NullableInterfaceRequestUntaggedVlan `json:"untagged_vlan,omitempty"`
+	TaggedVlans []int32 `json:"tagged_vlans,omitempty"`
+	QinqSvlan NullableInterfaceRequestUntaggedVlan `json:"qinq_svlan,omitempty"`
 	VlanTranslationPolicy NullableInterfaceRequestVlanTranslationPolicy `json:"vlan_translation_policy,omitempty"`
-	Vrf                   NullableIPAddressRequestVrf                   `json:"vrf,omitempty"`
-	Tags                  []NestedTagRequest                            `json:"tags,omitempty"`
-	CustomFields          map[string]interface{}                        `json:"custom_fields,omitempty"`
-	AdditionalProperties  map[string]interface{}
+	Vrf NullableIPAddressRequestVrf `json:"vrf,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VMInterfaceRequest VMInterfaceRequest
@@ -84,6 +84,7 @@ func (o *VMInterfaceRequest) SetVirtualMachine(v PatchedVirtualDiskRequestVirtua
 	o.VirtualMachine = v
 }
 
+
 // GetName returns the Name field value
 func (o *VMInterfaceRequest) GetName() string {
 	if o == nil {
@@ -107,6 +108,7 @@ func (o *VMInterfaceRequest) GetNameOk() (*string, bool) {
 func (o *VMInterfaceRequest) SetName(v string) {
 	o.Name = v
 }
+
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *VMInterfaceRequest) GetEnabled() bool {
@@ -172,7 +174,6 @@ func (o *VMInterfaceRequest) HasParent() bool {
 func (o *VMInterfaceRequest) SetParent(v NestedVMInterfaceRequest) {
 	o.Parent.Set(&v)
 }
-
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *VMInterfaceRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -215,7 +216,6 @@ func (o *VMInterfaceRequest) HasBridge() bool {
 func (o *VMInterfaceRequest) SetBridge(v NestedVMInterfaceRequest) {
 	o.Bridge.Set(&v)
 }
-
 // SetBridgeNil sets the value for Bridge to be an explicit nil
 func (o *VMInterfaceRequest) SetBridgeNil() {
 	o.Bridge.Set(nil)
@@ -258,7 +258,6 @@ func (o *VMInterfaceRequest) HasMtu() bool {
 func (o *VMInterfaceRequest) SetMtu(v int32) {
 	o.Mtu.Set(&v)
 }
-
 // SetMtuNil sets the value for Mtu to be an explicit nil
 func (o *VMInterfaceRequest) SetMtuNil() {
 	o.Mtu.Set(nil)
@@ -301,7 +300,6 @@ func (o *VMInterfaceRequest) HasPrimaryMacAddress() bool {
 func (o *VMInterfaceRequest) SetPrimaryMacAddress(v InterfaceRequestPrimaryMacAddress) {
 	o.PrimaryMacAddress.Set(&v)
 }
-
 // SetPrimaryMacAddressNil sets the value for PrimaryMacAddress to be an explicit nil
 func (o *VMInterfaceRequest) SetPrimaryMacAddressNil() {
 	o.PrimaryMacAddress.Set(nil)
@@ -408,7 +406,6 @@ func (o *VMInterfaceRequest) HasUntaggedVlan() bool {
 func (o *VMInterfaceRequest) SetUntaggedVlan(v InterfaceRequestUntaggedVlan) {
 	o.UntaggedVlan.Set(&v)
 }
-
 // SetUntaggedVlanNil sets the value for UntaggedVlan to be an explicit nil
 func (o *VMInterfaceRequest) SetUntaggedVlanNil() {
 	o.UntaggedVlan.Set(nil)
@@ -483,7 +480,6 @@ func (o *VMInterfaceRequest) HasQinqSvlan() bool {
 func (o *VMInterfaceRequest) SetQinqSvlan(v InterfaceRequestUntaggedVlan) {
 	o.QinqSvlan.Set(&v)
 }
-
 // SetQinqSvlanNil sets the value for QinqSvlan to be an explicit nil
 func (o *VMInterfaceRequest) SetQinqSvlanNil() {
 	o.QinqSvlan.Set(nil)
@@ -526,7 +522,6 @@ func (o *VMInterfaceRequest) HasVlanTranslationPolicy() bool {
 func (o *VMInterfaceRequest) SetVlanTranslationPolicy(v InterfaceRequestVlanTranslationPolicy) {
 	o.VlanTranslationPolicy.Set(&v)
 }
-
 // SetVlanTranslationPolicyNil sets the value for VlanTranslationPolicy to be an explicit nil
 func (o *VMInterfaceRequest) SetVlanTranslationPolicyNil() {
 	o.VlanTranslationPolicy.Set(nil)
@@ -569,7 +564,6 @@ func (o *VMInterfaceRequest) HasVrf() bool {
 func (o *VMInterfaceRequest) SetVrf(v IPAddressRequestVrf) {
 	o.Vrf.Set(&v)
 }
-
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *VMInterfaceRequest) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -645,7 +639,7 @@ func (o *VMInterfaceRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o VMInterfaceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -717,31 +711,32 @@ func (o *VMInterfaceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -815,3 +810,5 @@ func (v *NullableVMInterfaceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

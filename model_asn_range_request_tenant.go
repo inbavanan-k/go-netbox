@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ASNRangeRequestTenant - struct for ASNRangeRequestTenant
 type ASNRangeRequestTenant struct {
 	BriefTenantRequest *BriefTenantRequest
-	Int32              *int32
+	Int32 *int32
 }
 
 // BriefTenantRequestAsASNRangeRequestTenant is a convenience function that returns BriefTenantRequest wrapped in ASNRangeRequestTenant
@@ -36,6 +35,7 @@ func Int32AsASNRangeRequestTenant(v *int32) ASNRangeRequestTenant {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ASNRangeRequestTenant) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src ASNRangeRequestTenant) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ASNRangeRequestTenant) GetActualInstance() interface{} {
+func (obj *ASNRangeRequestTenant) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableASNRangeRequestTenant) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,18 +19,18 @@ var _ MappedNullable = &PatchedWritableL2VPNRequest{}
 
 // PatchedWritableL2VPNRequest Adds support for custom fields and tags.
 type PatchedWritableL2VPNRequest struct {
-	Identifier           NullableInt64                 `json:"identifier,omitempty"`
-	Name                 *string                       `json:"name,omitempty"`
-	Slug                 *string                       `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Type                 *BriefL2VPNTypeValue          `json:"type,omitempty"`
-	Status               *L2VPNStatusValue             `json:"status,omitempty"`
-	ImportTargets        []int32                       `json:"import_targets,omitempty"`
-	ExportTargets        []int32                       `json:"export_targets,omitempty"`
-	Description          *string                       `json:"description,omitempty"`
-	Comments             *string                       `json:"comments,omitempty"`
-	Tenant               NullableASNRangeRequestTenant `json:"tenant,omitempty"`
-	Tags                 []NestedTagRequest            `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}        `json:"custom_fields,omitempty"`
+	Identifier NullableInt64 `json:"identifier,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Slug *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Type *BriefL2VPNTypeValue `json:"type,omitempty"`
+	Status *L2VPNStatusValue `json:"status,omitempty"`
+	ImportTargets []int32 `json:"import_targets,omitempty"`
+	ExportTargets []int32 `json:"export_targets,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *PatchedWritableL2VPNRequest) HasIdentifier() bool {
 func (o *PatchedWritableL2VPNRequest) SetIdentifier(v int64) {
 	o.Identifier.Set(&v)
 }
-
 // SetIdentifierNil sets the value for Identifier to be an explicit nil
 func (o *PatchedWritableL2VPNRequest) SetIdentifierNil() {
 	o.Identifier.Set(nil)
@@ -384,7 +383,6 @@ func (o *PatchedWritableL2VPNRequest) HasTenant() bool {
 func (o *PatchedWritableL2VPNRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableL2VPNRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -460,7 +458,7 @@ func (o *PatchedWritableL2VPNRequest) SetCustomFields(v map[string]interface{}) 
 }
 
 func (o PatchedWritableL2VPNRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -580,3 +578,5 @@ func (v *NullablePatchedWritableL2VPNRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ type PatchedWritablePowerOutletRequestStatus string
 
 // List of PatchedWritablePowerOutletRequest_status
 const (
-	PATCHEDWRITABLEPOWEROUTLETREQUESTSTATUS_ENABLED  PatchedWritablePowerOutletRequestStatus = "enabled"
+	PATCHEDWRITABLEPOWEROUTLETREQUESTSTATUS_ENABLED PatchedWritablePowerOutletRequestStatus = "enabled"
 	PATCHEDWRITABLEPOWEROUTLETREQUESTSTATUS_DISABLED PatchedWritablePowerOutletRequestStatus = "disabled"
-	PATCHEDWRITABLEPOWEROUTLETREQUESTSTATUS_FAULTY   PatchedWritablePowerOutletRequestStatus = "faulty"
+	PATCHEDWRITABLEPOWEROUTLETREQUESTSTATUS_FAULTY PatchedWritablePowerOutletRequestStatus = "faulty"
 )
 
 // All allowed values of PatchedWritablePowerOutletRequestStatus enum
@@ -110,3 +110,4 @@ func (v *NullablePatchedWritablePowerOutletRequestStatus) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

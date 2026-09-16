@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceWithConfigContextRequestCluster - struct for DeviceWithConfigContextRequestCluster
 type DeviceWithConfigContextRequestCluster struct {
 	BriefClusterRequest *BriefClusterRequest
-	Int32               *int32
+	Int32 *int32
 }
 
 // BriefClusterRequestAsDeviceWithConfigContextRequestCluster is a convenience function that returns BriefClusterRequest wrapped in DeviceWithConfigContextRequestCluster
@@ -36,6 +35,7 @@ func Int32AsDeviceWithConfigContextRequestCluster(v *int32) DeviceWithConfigCont
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceWithConfigContextRequestCluster) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src DeviceWithConfigContextRequestCluster) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceWithConfigContextRequestCluster) GetActualInstance() interface{} {
+func (obj *DeviceWithConfigContextRequestCluster) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableDeviceWithConfigContextRequestCluster) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

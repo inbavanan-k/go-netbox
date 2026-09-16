@@ -20,20 +20,20 @@ var _ MappedNullable = &WritableRearPortRequest{}
 
 // WritableRearPortRequest Adds support for custom fields and tags.
 type WritableRearPortRequest struct {
-	Device BriefInterfaceRequestDevice      `json:"device"`
+	Device BriefInterfaceRequestDevice `json:"device"`
 	Module NullableConsolePortRequestModule `json:"module,omitempty"`
-	Name   string                           `json:"name"`
+	Name string `json:"name"`
 	// Physical label
-	Label *string            `json:"label,omitempty"`
-	Type  FrontPortTypeValue `json:"type"`
-	Color *string            `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
+	Label *string `json:"label,omitempty"`
+	Type FrontPortTypeValue `json:"type"`
+	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
 	// Number of front ports which may be mapped
-	Positions   *int32  `json:"positions,omitempty"`
+	Positions *int32 `json:"positions,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Treat as if a cable is connected
-	MarkConnected        *bool                  `json:"mark_connected,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	MarkConnected *bool `json:"mark_connected,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,6 +83,7 @@ func (o *WritableRearPortRequest) SetDevice(v BriefInterfaceRequestDevice) {
 	o.Device = v
 }
 
+
 // GetModule returns the Module field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableRearPortRequest) GetModule() ConsolePortRequestModule {
 	if o == nil || IsNil(o.Module.Get()) {
@@ -115,7 +116,6 @@ func (o *WritableRearPortRequest) HasModule() bool {
 func (o *WritableRearPortRequest) SetModule(v ConsolePortRequestModule) {
 	o.Module.Set(&v)
 }
-
 // SetModuleNil sets the value for Module to be an explicit nil
 func (o *WritableRearPortRequest) SetModuleNil() {
 	o.Module.Set(nil)
@@ -149,6 +149,7 @@ func (o *WritableRearPortRequest) GetNameOk() (*string, bool) {
 func (o *WritableRearPortRequest) SetName(v string) {
 	o.Name = v
 }
+
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *WritableRearPortRequest) GetLabel() string {
@@ -205,6 +206,7 @@ func (o *WritableRearPortRequest) GetTypeOk() (*FrontPortTypeValue, bool) {
 func (o *WritableRearPortRequest) SetType(v FrontPortTypeValue) {
 	o.Type = v
 }
+
 
 // GetColor returns the Color field value if set, zero value otherwise.
 func (o *WritableRearPortRequest) GetColor() string {
@@ -399,7 +401,7 @@ func (o *WritableRearPortRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o WritableRearPortRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -455,31 +457,32 @@ func (o *WritableRearPortRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -548,3 +551,5 @@ func (v *NullableWritableRearPortRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

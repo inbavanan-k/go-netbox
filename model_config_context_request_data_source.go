@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ConfigContextRequestDataSource - struct for ConfigContextRequestDataSource
 type ConfigContextRequestDataSource struct {
 	BriefDataSourceRequest *BriefDataSourceRequest
-	Int32                  *int32
+	Int32 *int32
 }
 
 // BriefDataSourceRequestAsConfigContextRequestDataSource is a convenience function that returns BriefDataSourceRequest wrapped in ConfigContextRequestDataSource
@@ -36,6 +35,7 @@ func Int32AsConfigContextRequestDataSource(v *int32) ConfigContextRequestDataSou
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ConfigContextRequestDataSource) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src ConfigContextRequestDataSource) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ConfigContextRequestDataSource) GetActualInstance() interface{} {
+func (obj *ConfigContextRequestDataSource) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableConfigContextRequestDataSource) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

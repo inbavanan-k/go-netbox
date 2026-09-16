@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritablePowerOutletRequestPowerPort - struct for PatchedWritablePowerOutletRequestPowerPort
 type PatchedWritablePowerOutletRequestPowerPort struct {
 	BriefPowerPortRequest *BriefPowerPortRequest
-	Int32                 *int32
+	Int32 *int32
 }
 
 // BriefPowerPortRequestAsPatchedWritablePowerOutletRequestPowerPort is a convenience function that returns BriefPowerPortRequest wrapped in PatchedWritablePowerOutletRequestPowerPort
@@ -36,6 +35,7 @@ func Int32AsPatchedWritablePowerOutletRequestPowerPort(v *int32) PatchedWritable
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritablePowerOutletRequestPowerPort) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedWritablePowerOutletRequestPowerPort) MarshalJSON() ([]byte, err
 }
 
 // Get the actual instance
-func (obj *PatchedWritablePowerOutletRequestPowerPort) GetActualInstance() interface{} {
+func (obj *PatchedWritablePowerOutletRequestPowerPort) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedWritablePowerOutletRequestPowerPort) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

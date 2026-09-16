@@ -20,9 +20,9 @@ type PowerOutletStatusLabel string
 
 // List of PowerOutlet_status_label
 const (
-	POWEROUTLETSTATUSLABEL_ENABLED  PowerOutletStatusLabel = "Enabled"
+	POWEROUTLETSTATUSLABEL_ENABLED PowerOutletStatusLabel = "Enabled"
 	POWEROUTLETSTATUSLABEL_DISABLED PowerOutletStatusLabel = "Disabled"
-	POWEROUTLETSTATUSLABEL_FAULTY   PowerOutletStatusLabel = "Faulty"
+	POWEROUTLETSTATUSLABEL_FAULTY PowerOutletStatusLabel = "Faulty"
 )
 
 // All allowed values of PowerOutletStatusLabel enum
@@ -110,3 +110,4 @@ func (v *NullablePowerOutletStatusLabel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

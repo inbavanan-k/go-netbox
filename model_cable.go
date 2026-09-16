@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the Cable type satisfies the MappedNullable interface at compile time
@@ -21,25 +21,25 @@ var _ MappedNullable = &Cable{}
 
 // Cable Adds support for custom fields and tags.
 type Cable struct {
-	Id                   int32                   `json:"id"`
-	Url                  string                  `json:"url"`
-	DisplayUrl           *string                 `json:"display_url,omitempty"`
-	Display              string                  `json:"display"`
-	Type                 NullableCableType       `json:"type,omitempty"`
-	ATerminations        []GenericObject         `json:"a_terminations,omitempty"`
-	BTerminations        []GenericObject         `json:"b_terminations,omitempty"`
-	Status               *CableStatus            `json:"status,omitempty"`
-	Tenant               NullableBriefTenant     `json:"tenant,omitempty"`
-	Label                *string                 `json:"label,omitempty"`
-	Color                *string                 `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
-	Length               NullableFloat64         `json:"length,omitempty"`
-	LengthUnit           NullableCableLengthUnit `json:"length_unit,omitempty"`
-	Description          *string                 `json:"description,omitempty"`
-	Comments             *string                 `json:"comments,omitempty"`
-	Tags                 []NestedTag             `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}  `json:"custom_fields,omitempty"`
-	Created              NullableTime            `json:"created,omitempty"`
-	LastUpdated          NullableTime            `json:"last_updated,omitempty"`
+	Id int32 `json:"id"`
+	Url string `json:"url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
+	Display string `json:"display"`
+	Type NullableCableType `json:"type,omitempty"`
+	ATerminations []GenericObject `json:"a_terminations,omitempty"`
+	BTerminations []GenericObject `json:"b_terminations,omitempty"`
+	Status *CableStatus `json:"status,omitempty"`
+	Tenant NullableBriefTenant `json:"tenant,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
+	Length NullableFloat64 `json:"length,omitempty"`
+	LengthUnit NullableCableLengthUnit `json:"length_unit,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTag `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -89,6 +89,7 @@ func (o *Cable) SetId(v int32) {
 	o.Id = v
 }
 
+
 // GetUrl returns the Url field value
 func (o *Cable) GetUrl() string {
 	if o == nil {
@@ -112,6 +113,7 @@ func (o *Cable) GetUrlOk() (*string, bool) {
 func (o *Cable) SetUrl(v string) {
 	o.Url = v
 }
+
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Cable) GetDisplayUrl() string {
@@ -169,6 +171,7 @@ func (o *Cable) SetDisplay(v string) {
 	o.Display = v
 }
 
+
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cable) GetType() CableType {
 	if o == nil || IsNil(o.Type.Get()) {
@@ -201,7 +204,6 @@ func (o *Cable) HasType() bool {
 func (o *Cable) SetType(v CableType) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *Cable) SetTypeNil() {
 	o.Type.Set(nil)
@@ -340,7 +342,6 @@ func (o *Cable) HasTenant() bool {
 func (o *Cable) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *Cable) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -447,7 +448,6 @@ func (o *Cable) HasLength() bool {
 func (o *Cable) SetLength(v float64) {
 	o.Length.Set(&v)
 }
-
 // SetLengthNil sets the value for Length to be an explicit nil
 func (o *Cable) SetLengthNil() {
 	o.Length.Set(nil)
@@ -490,7 +490,6 @@ func (o *Cable) HasLengthUnit() bool {
 func (o *Cable) SetLengthUnit(v CableLengthUnit) {
 	o.LengthUnit.Set(&v)
 }
-
 // SetLengthUnitNil sets the value for LengthUnit to be an explicit nil
 func (o *Cable) SetLengthUnitNil() {
 	o.LengthUnit.Set(nil)
@@ -661,7 +660,6 @@ func (o *Cable) HasCreated() bool {
 func (o *Cable) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
-
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Cable) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -704,7 +702,6 @@ func (o *Cable) HasLastUpdated() bool {
 func (o *Cable) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
-
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Cable) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -716,7 +713,7 @@ func (o *Cable) UnsetLastUpdated() {
 }
 
 func (o Cable) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -796,31 +793,32 @@ func (o *Cable) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -897,3 +895,5 @@ func (v *NullableCable) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

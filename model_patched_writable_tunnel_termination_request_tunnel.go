@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableTunnelTerminationRequestTunnel - struct for PatchedWritableTunnelTerminationRequestTunnel
 type PatchedWritableTunnelTerminationRequestTunnel struct {
 	BriefTunnelRequest *BriefTunnelRequest
-	Int32              *int32
+	Int32 *int32
 }
 
 // BriefTunnelRequestAsPatchedWritableTunnelTerminationRequestTunnel is a convenience function that returns BriefTunnelRequest wrapped in PatchedWritableTunnelTerminationRequestTunnel
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableTunnelTerminationRequestTunnel(v *int32) PatchedWrita
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableTunnelTerminationRequestTunnel) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src PatchedWritableTunnelTerminationRequestTunnel) MarshalJSON() ([]byte, 
 }
 
 // Get the actual instance
-func (obj *PatchedWritableTunnelTerminationRequestTunnel) GetActualInstance() interface{} {
+func (obj *PatchedWritableTunnelTerminationRequestTunnel) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullablePatchedWritableTunnelTerminationRequestTunnel) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

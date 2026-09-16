@@ -20,20 +20,20 @@ var _ MappedNullable = &WirelessLinkRequest{}
 
 // WirelessLinkRequest Adds support for custom fields and tags.
 type WirelessLinkRequest struct {
-	InterfaceA           PatchedWritableVirtualCircuitTerminationRequestInterface `json:"interface_a"`
-	InterfaceB           PatchedWritableVirtualCircuitTerminationRequestInterface `json:"interface_b"`
-	Ssid                 *string                                                  `json:"ssid,omitempty"`
-	Status               *CableStatusValue                                        `json:"status,omitempty"`
-	Tenant               NullableASNRangeRequestTenant                            `json:"tenant,omitempty"`
-	AuthType             *WirelessLANAuthTypeValue                                `json:"auth_type,omitempty"`
-	AuthCipher           *WirelessLANAuthCipherValue                              `json:"auth_cipher,omitempty"`
-	AuthPsk              *string                                                  `json:"auth_psk,omitempty"`
-	Distance             NullableFloat64                                          `json:"distance,omitempty"`
-	DistanceUnit         NullableCircuitRequestDistanceUnit                       `json:"distance_unit,omitempty"`
-	Description          *string                                                  `json:"description,omitempty"`
-	Comments             *string                                                  `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                                       `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                                   `json:"custom_fields,omitempty"`
+	InterfaceA PatchedWritableVirtualCircuitTerminationRequestInterface `json:"interface_a"`
+	InterfaceB PatchedWritableVirtualCircuitTerminationRequestInterface `json:"interface_b"`
+	Ssid *string `json:"ssid,omitempty"`
+	Status *CableStatusValue `json:"status,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	AuthType *WirelessLANAuthTypeValue `json:"auth_type,omitempty"`
+	AuthCipher *WirelessLANAuthCipherValue `json:"auth_cipher,omitempty"`
+	AuthPsk *string `json:"auth_psk,omitempty"`
+	Distance NullableFloat64 `json:"distance,omitempty"`
+	DistanceUnit NullableCircuitRequestDistanceUnit `json:"distance_unit,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -82,6 +82,7 @@ func (o *WirelessLinkRequest) SetInterfaceA(v PatchedWritableVirtualCircuitTermi
 	o.InterfaceA = v
 }
 
+
 // GetInterfaceB returns the InterfaceB field value
 func (o *WirelessLinkRequest) GetInterfaceB() PatchedWritableVirtualCircuitTerminationRequestInterface {
 	if o == nil {
@@ -105,6 +106,7 @@ func (o *WirelessLinkRequest) GetInterfaceBOk() (*PatchedWritableVirtualCircuitT
 func (o *WirelessLinkRequest) SetInterfaceB(v PatchedWritableVirtualCircuitTerminationRequestInterface) {
 	o.InterfaceB = v
 }
+
 
 // GetSsid returns the Ssid field value if set, zero value otherwise.
 func (o *WirelessLinkRequest) GetSsid() string {
@@ -202,7 +204,6 @@ func (o *WirelessLinkRequest) HasTenant() bool {
 func (o *WirelessLinkRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WirelessLinkRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -341,7 +342,6 @@ func (o *WirelessLinkRequest) HasDistance() bool {
 func (o *WirelessLinkRequest) SetDistance(v float64) {
 	o.Distance.Set(&v)
 }
-
 // SetDistanceNil sets the value for Distance to be an explicit nil
 func (o *WirelessLinkRequest) SetDistanceNil() {
 	o.Distance.Set(nil)
@@ -384,7 +384,6 @@ func (o *WirelessLinkRequest) HasDistanceUnit() bool {
 func (o *WirelessLinkRequest) SetDistanceUnit(v CircuitRequestDistanceUnit) {
 	o.DistanceUnit.Set(&v)
 }
-
 // SetDistanceUnitNil sets the value for DistanceUnit to be an explicit nil
 func (o *WirelessLinkRequest) SetDistanceUnitNil() {
 	o.DistanceUnit.Set(nil)
@@ -524,7 +523,7 @@ func (o *WirelessLinkRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o WirelessLinkRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -590,31 +589,32 @@ func (o *WirelessLinkRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -686,3 +686,5 @@ func (v *NullableWirelessLinkRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

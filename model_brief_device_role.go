@@ -20,15 +20,15 @@ var _ MappedNullable = &BriefDeviceRole{}
 
 // BriefDeviceRole Extends PrimaryModelSerializer to include MPTT support.
 type BriefDeviceRole struct {
-	Id                   int32   `json:"id"`
-	Url                  string  `json:"url"`
-	Display              string  `json:"display"`
-	Name                 string  `json:"name"`
-	Slug                 string  `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description          *string `json:"description,omitempty"`
-	DeviceCount          *int64  `json:"device_count,omitempty"`
-	VirtualmachineCount  *int64  `json:"virtualmachine_count,omitempty"`
-	Depth                int32   `json:"_depth"`
+	Id int32 `json:"id"`
+	Url string `json:"url"`
+	Display string `json:"display"`
+	Name string `json:"name"`
+	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description *string `json:"description,omitempty"`
+	DeviceCount *int64 `json:"device_count,omitempty"`
+	VirtualmachineCount *int64 `json:"virtualmachine_count,omitempty"`
+	Depth int32 `json:"_depth"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *BriefDeviceRole) SetId(v int32) {
 	o.Id = v
 }
 
+
 // GetUrl returns the Url field value
 func (o *BriefDeviceRole) GetUrl() string {
 	if o == nil {
@@ -104,6 +105,7 @@ func (o *BriefDeviceRole) GetUrlOk() (*string, bool) {
 func (o *BriefDeviceRole) SetUrl(v string) {
 	o.Url = v
 }
+
 
 // GetDisplay returns the Display field value
 func (o *BriefDeviceRole) GetDisplay() string {
@@ -129,6 +131,7 @@ func (o *BriefDeviceRole) SetDisplay(v string) {
 	o.Display = v
 }
 
+
 // GetName returns the Name field value
 func (o *BriefDeviceRole) GetName() string {
 	if o == nil {
@@ -153,6 +156,7 @@ func (o *BriefDeviceRole) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetSlug returns the Slug field value
 func (o *BriefDeviceRole) GetSlug() string {
 	if o == nil {
@@ -176,6 +180,7 @@ func (o *BriefDeviceRole) GetSlugOk() (*string, bool) {
 func (o *BriefDeviceRole) SetSlug(v string) {
 	o.Slug = v
 }
+
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BriefDeviceRole) GetDescription() string {
@@ -297,8 +302,9 @@ func (o *BriefDeviceRole) SetDepth(v int32) {
 	o.Depth = v
 }
 
+
 func (o BriefDeviceRole) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,31 +351,32 @@ func (o *BriefDeviceRole) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -436,3 +443,5 @@ func (v *NullableBriefDeviceRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

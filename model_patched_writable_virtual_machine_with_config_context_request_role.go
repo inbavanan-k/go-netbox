@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableVirtualMachineWithConfigContextRequestRole - struct for PatchedWritableVirtualMachineWithConfigContextRequestRole
 type PatchedWritableVirtualMachineWithConfigContextRequestRole struct {
 	BriefDeviceRoleRequest *BriefDeviceRoleRequest
-	Int32                  *int32
+	Int32 *int32
 }
 
 // BriefDeviceRoleRequestAsPatchedWritableVirtualMachineWithConfigContextRequestRole is a convenience function that returns BriefDeviceRoleRequest wrapped in PatchedWritableVirtualMachineWithConfigContextRequestRole
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableVirtualMachineWithConfigContextRequestRole(v *int32) 
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableVirtualMachineWithConfigContextRequestRole) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedWritableVirtualMachineWithConfigContextRequestRole) MarshalJSON
 }
 
 // Get the actual instance
-func (obj *PatchedWritableVirtualMachineWithConfigContextRequestRole) GetActualInstance() interface{} {
+func (obj *PatchedWritableVirtualMachineWithConfigContextRequestRole) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedWritableVirtualMachineWithConfigContextRequestRole) Unma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

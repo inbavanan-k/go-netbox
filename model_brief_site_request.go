@@ -21,9 +21,9 @@ var _ MappedNullable = &BriefSiteRequest{}
 // BriefSiteRequest Adds support for custom fields and tags.
 type BriefSiteRequest struct {
 	// Full name of the site
-	Name                 string  `json:"name"`
-	Slug                 string  `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description          *string `json:"description,omitempty"`
+	Name string `json:"name"`
+	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,6 +72,7 @@ func (o *BriefSiteRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetSlug returns the Slug field value
 func (o *BriefSiteRequest) GetSlug() string {
 	if o == nil {
@@ -95,6 +96,7 @@ func (o *BriefSiteRequest) GetSlugOk() (*string, bool) {
 func (o *BriefSiteRequest) SetSlug(v string) {
 	o.Slug = v
 }
+
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BriefSiteRequest) GetDescription() string {
@@ -129,7 +131,7 @@ func (o *BriefSiteRequest) SetDescription(v string) {
 }
 
 func (o BriefSiteRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,31 +164,32 @@ func (o *BriefSiteRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -247,3 +250,5 @@ func (v *NullableBriefSiteRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

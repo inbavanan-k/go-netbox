@@ -19,13 +19,13 @@ var _ MappedNullable = &PatchedWritableTenantGroupRequest{}
 
 // PatchedWritableTenantGroupRequest Extends PrimaryModelSerializer to include MPTT support.
 type PatchedWritableTenantGroupRequest struct {
-	Name                 *string                `json:"name,omitempty"`
-	Slug                 *string                `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Parent               NullableInt32          `json:"parent,omitempty"`
-	Description          *string                `json:"description,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Slug *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Parent NullableInt32 `json:"parent,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Comments *string `json:"comments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,7 +144,6 @@ func (o *PatchedWritableTenantGroupRequest) HasParent() bool {
 func (o *PatchedWritableTenantGroupRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
-
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *PatchedWritableTenantGroupRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -284,7 +283,7 @@ func (o *PatchedWritableTenantGroupRequest) SetComments(v string) {
 }
 
 func (o PatchedWritableTenantGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -384,3 +383,5 @@ func (v *NullablePatchedWritableTenantGroupRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

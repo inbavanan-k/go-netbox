@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceWithConfigContextRequestRack - struct for DeviceWithConfigContextRequestRack
 type DeviceWithConfigContextRequestRack struct {
 	BriefRackRequest *BriefRackRequest
-	Int32            *int32
+	Int32 *int32
 }
 
 // BriefRackRequestAsDeviceWithConfigContextRequestRack is a convenience function that returns BriefRackRequest wrapped in DeviceWithConfigContextRequestRack
@@ -36,6 +35,7 @@ func Int32AsDeviceWithConfigContextRequestRack(v *int32) DeviceWithConfigContext
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceWithConfigContextRequestRack) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src DeviceWithConfigContextRequestRack) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceWithConfigContextRequestRack) GetActualInstance() interface{} {
+func (obj *DeviceWithConfigContextRequestRack) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableDeviceWithConfigContextRequestRack) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

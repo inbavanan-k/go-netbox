@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // BriefCircuitGroupAssignmentSerializerRequestGroup - struct for BriefCircuitGroupAssignmentSerializerRequestGroup
 type BriefCircuitGroupAssignmentSerializerRequestGroup struct {
 	BriefCircuitGroupRequest *BriefCircuitGroupRequest
-	Int32                    *int32
+	Int32 *int32
 }
 
 // BriefCircuitGroupRequestAsBriefCircuitGroupAssignmentSerializerRequestGroup is a convenience function that returns BriefCircuitGroupRequest wrapped in BriefCircuitGroupAssignmentSerializerRequestGroup
@@ -36,6 +35,7 @@ func Int32AsBriefCircuitGroupAssignmentSerializerRequestGroup(v *int32) BriefCir
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *BriefCircuitGroupAssignmentSerializerRequestGroup) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src BriefCircuitGroupAssignmentSerializerRequestGroup) MarshalJSON() ([]by
 }
 
 // Get the actual instance
-func (obj *BriefCircuitGroupAssignmentSerializerRequestGroup) GetActualInstance() interface{} {
+func (obj *BriefCircuitGroupAssignmentSerializerRequestGroup) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableBriefCircuitGroupAssignmentSerializerRequestGroup) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

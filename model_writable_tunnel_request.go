@@ -20,17 +20,17 @@ var _ MappedNullable = &WritableTunnelRequest{}
 
 // WritableTunnelRequest Adds support for custom fields and tags.
 type WritableTunnelRequest struct {
-	Name                 string                                           `json:"name"`
-	Status               *PatchedWritableTunnelRequestStatus              `json:"status,omitempty"`
-	Group                NullablePatchedWritableTunnelRequestGroup        `json:"group,omitempty"`
-	Encapsulation        PatchedWritableTunnelRequestEncapsulation        `json:"encapsulation"`
-	IpsecProfile         NullablePatchedWritableTunnelRequestIpsecProfile `json:"ipsec_profile,omitempty"`
-	Tenant               NullableASNRangeRequestTenant                    `json:"tenant,omitempty"`
-	TunnelId             NullableInt64                                    `json:"tunnel_id,omitempty"`
-	Description          *string                                          `json:"description,omitempty"`
-	Comments             *string                                          `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                               `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                           `json:"custom_fields,omitempty"`
+	Name string `json:"name"`
+	Status *PatchedWritableTunnelRequestStatus `json:"status,omitempty"`
+	Group NullablePatchedWritableTunnelRequestGroup `json:"group,omitempty"`
+	Encapsulation PatchedWritableTunnelRequestEncapsulation `json:"encapsulation"`
+	IpsecProfile NullablePatchedWritableTunnelRequestIpsecProfile `json:"ipsec_profile,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	TunnelId NullableInt64 `json:"tunnel_id,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *WritableTunnelRequest) GetNameOk() (*string, bool) {
 func (o *WritableTunnelRequest) SetName(v string) {
 	o.Name = v
 }
+
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *WritableTunnelRequest) GetStatus() PatchedWritableTunnelRequestStatus {
@@ -143,7 +144,6 @@ func (o *WritableTunnelRequest) HasGroup() bool {
 func (o *WritableTunnelRequest) SetGroup(v PatchedWritableTunnelRequestGroup) {
 	o.Group.Set(&v)
 }
-
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *WritableTunnelRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -178,6 +178,7 @@ func (o *WritableTunnelRequest) SetEncapsulation(v PatchedWritableTunnelRequestE
 	o.Encapsulation = v
 }
 
+
 // GetIpsecProfile returns the IpsecProfile field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableTunnelRequest) GetIpsecProfile() PatchedWritableTunnelRequestIpsecProfile {
 	if o == nil || IsNil(o.IpsecProfile.Get()) {
@@ -210,7 +211,6 @@ func (o *WritableTunnelRequest) HasIpsecProfile() bool {
 func (o *WritableTunnelRequest) SetIpsecProfile(v PatchedWritableTunnelRequestIpsecProfile) {
 	o.IpsecProfile.Set(&v)
 }
-
 // SetIpsecProfileNil sets the value for IpsecProfile to be an explicit nil
 func (o *WritableTunnelRequest) SetIpsecProfileNil() {
 	o.IpsecProfile.Set(nil)
@@ -253,7 +253,6 @@ func (o *WritableTunnelRequest) HasTenant() bool {
 func (o *WritableTunnelRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WritableTunnelRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -296,7 +295,6 @@ func (o *WritableTunnelRequest) HasTunnelId() bool {
 func (o *WritableTunnelRequest) SetTunnelId(v int64) {
 	o.TunnelId.Set(&v)
 }
-
 // SetTunnelIdNil sets the value for TunnelId to be an explicit nil
 func (o *WritableTunnelRequest) SetTunnelIdNil() {
 	o.TunnelId.Set(nil)
@@ -436,7 +434,7 @@ func (o *WritableTunnelRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o WritableTunnelRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -493,31 +491,32 @@ func (o *WritableTunnelRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -586,3 +585,5 @@ func (v *NullableWritableTunnelRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

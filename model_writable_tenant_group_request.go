@@ -20,13 +20,13 @@ var _ MappedNullable = &WritableTenantGroupRequest{}
 
 // WritableTenantGroupRequest Extends PrimaryModelSerializer to include MPTT support.
 type WritableTenantGroupRequest struct {
-	Name                 string                 `json:"name"`
-	Slug                 string                 `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Parent               NullableInt32          `json:"parent,omitempty"`
-	Description          *string                `json:"description,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
+	Name string `json:"name"`
+	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Parent NullableInt32 `json:"parent,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Comments *string `json:"comments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *WritableTenantGroupRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetSlug returns the Slug field value
 func (o *WritableTenantGroupRequest) GetSlug() string {
 	if o == nil {
@@ -98,6 +99,7 @@ func (o *WritableTenantGroupRequest) GetSlugOk() (*string, bool) {
 func (o *WritableTenantGroupRequest) SetSlug(v string) {
 	o.Slug = v
 }
+
 
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableTenantGroupRequest) GetParent() int32 {
@@ -131,7 +133,6 @@ func (o *WritableTenantGroupRequest) HasParent() bool {
 func (o *WritableTenantGroupRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
-
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *WritableTenantGroupRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -271,7 +272,7 @@ func (o *WritableTenantGroupRequest) SetComments(v string) {
 }
 
 func (o WritableTenantGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -316,31 +317,32 @@ func (o *WritableTenantGroupRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -405,3 +407,5 @@ func (v *NullableWritableTenantGroupRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

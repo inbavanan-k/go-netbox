@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // InterfaceRequestPrimaryMacAddress - struct for InterfaceRequestPrimaryMacAddress
 type InterfaceRequestPrimaryMacAddress struct {
 	BriefMACAddressRequest *BriefMACAddressRequest
-	Int32                  *int32
+	Int32 *int32
 }
 
 // BriefMACAddressRequestAsInterfaceRequestPrimaryMacAddress is a convenience function that returns BriefMACAddressRequest wrapped in InterfaceRequestPrimaryMacAddress
@@ -36,6 +35,7 @@ func Int32AsInterfaceRequestPrimaryMacAddress(v *int32) InterfaceRequestPrimaryM
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *InterfaceRequestPrimaryMacAddress) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src InterfaceRequestPrimaryMacAddress) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *InterfaceRequestPrimaryMacAddress) GetActualInstance() interface{} {
+func (obj *InterfaceRequestPrimaryMacAddress) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableInterfaceRequestPrimaryMacAddress) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

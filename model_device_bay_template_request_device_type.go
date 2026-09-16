@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceBayTemplateRequestDeviceType - struct for DeviceBayTemplateRequestDeviceType
 type DeviceBayTemplateRequestDeviceType struct {
 	BriefDeviceTypeRequest *BriefDeviceTypeRequest
-	Int32                  *int32
+	Int32 *int32
 }
 
 // BriefDeviceTypeRequestAsDeviceBayTemplateRequestDeviceType is a convenience function that returns BriefDeviceTypeRequest wrapped in DeviceBayTemplateRequestDeviceType
@@ -36,6 +35,7 @@ func Int32AsDeviceBayTemplateRequestDeviceType(v *int32) DeviceBayTemplateReques
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceBayTemplateRequestDeviceType) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src DeviceBayTemplateRequestDeviceType) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceBayTemplateRequestDeviceType) GetActualInstance() interface{} {
+func (obj *DeviceBayTemplateRequestDeviceType) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableDeviceBayTemplateRequestDeviceType) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

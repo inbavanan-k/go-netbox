@@ -20,13 +20,13 @@ var _ MappedNullable = &ProviderAccountRequest{}
 
 // ProviderAccountRequest Adds support for custom fields and tags.
 type ProviderAccountRequest struct {
-	Provider             BriefCircuitRequestProvider `json:"provider"`
-	Name                 *string                     `json:"name,omitempty"`
-	Account              string                      `json:"account"`
-	Description          *string                     `json:"description,omitempty"`
-	Comments             *string                     `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest          `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}      `json:"custom_fields,omitempty"`
+	Provider BriefCircuitRequestProvider `json:"provider"`
+	Name *string `json:"name,omitempty"`
+	Account string `json:"account"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *ProviderAccountRequest) GetProviderOk() (*BriefCircuitRequestProvider, 
 func (o *ProviderAccountRequest) SetProvider(v BriefCircuitRequestProvider) {
 	o.Provider = v
 }
+
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ProviderAccountRequest) GetName() string {
@@ -134,6 +135,7 @@ func (o *ProviderAccountRequest) GetAccountOk() (*string, bool) {
 func (o *ProviderAccountRequest) SetAccount(v string) {
 	o.Account = v
 }
+
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ProviderAccountRequest) GetDescription() string {
@@ -264,7 +266,7 @@ func (o *ProviderAccountRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o ProviderAccountRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -309,31 +311,32 @@ func (o *ProviderAccountRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -398,3 +401,5 @@ func (v *NullableProviderAccountRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

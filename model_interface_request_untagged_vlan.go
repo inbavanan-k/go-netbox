@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // InterfaceRequestUntaggedVlan - struct for InterfaceRequestUntaggedVlan
 type InterfaceRequestUntaggedVlan struct {
 	BriefVLANRequest *BriefVLANRequest
-	Int32            *int32
+	Int32 *int32
 }
 
 // BriefVLANRequestAsInterfaceRequestUntaggedVlan is a convenience function that returns BriefVLANRequest wrapped in InterfaceRequestUntaggedVlan
@@ -36,6 +35,7 @@ func Int32AsInterfaceRequestUntaggedVlan(v *int32) InterfaceRequestUntaggedVlan 
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *InterfaceRequestUntaggedVlan) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src InterfaceRequestUntaggedVlan) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *InterfaceRequestUntaggedVlan) GetActualInstance() interface{} {
+func (obj *InterfaceRequestUntaggedVlan) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableInterfaceRequestUntaggedVlan) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,16 +20,16 @@ var _ MappedNullable = &TableConfigRequest{}
 
 // TableConfigRequest Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type TableConfigRequest struct {
-	ObjectType           string        `json:"object_type"`
-	Table                string        `json:"table"`
-	Name                 string        `json:"name"`
-	Description          *string       `json:"description,omitempty"`
-	User                 NullableInt32 `json:"user,omitempty"`
-	Weight               *int32        `json:"weight,omitempty"`
-	Enabled              *bool         `json:"enabled,omitempty"`
-	Shared               *bool         `json:"shared,omitempty"`
-	Columns              []string      `json:"columns"`
-	Ordering             []string      `json:"ordering,omitempty"`
+	ObjectType string `json:"object_type"`
+	Table string `json:"table"`
+	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
+	User NullableInt32 `json:"user,omitempty"`
+	Weight *int32 `json:"weight,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Shared *bool `json:"shared,omitempty"`
+	Columns []string `json:"columns"`
+	Ordering []string `json:"ordering,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,6 +80,7 @@ func (o *TableConfigRequest) SetObjectType(v string) {
 	o.ObjectType = v
 }
 
+
 // GetTable returns the Table field value
 func (o *TableConfigRequest) GetTable() string {
 	if o == nil {
@@ -104,6 +105,7 @@ func (o *TableConfigRequest) SetTable(v string) {
 	o.Table = v
 }
 
+
 // GetName returns the Name field value
 func (o *TableConfigRequest) GetName() string {
 	if o == nil {
@@ -127,6 +129,7 @@ func (o *TableConfigRequest) GetNameOk() (*string, bool) {
 func (o *TableConfigRequest) SetName(v string) {
 	o.Name = v
 }
+
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TableConfigRequest) GetDescription() string {
@@ -192,7 +195,6 @@ func (o *TableConfigRequest) HasUser() bool {
 func (o *TableConfigRequest) SetUser(v int32) {
 	o.User.Set(&v)
 }
-
 // SetUserNil sets the value for User to be an explicit nil
 func (o *TableConfigRequest) SetUserNil() {
 	o.User.Set(nil)
@@ -323,6 +325,7 @@ func (o *TableConfigRequest) SetColumns(v []string) {
 	o.Columns = v
 }
 
+
 // GetOrdering returns the Ordering field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TableConfigRequest) GetOrdering() []string {
 	if o == nil {
@@ -357,7 +360,7 @@ func (o *TableConfigRequest) SetOrdering(v []string) {
 }
 
 func (o TableConfigRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -409,31 +412,32 @@ func (o *TableConfigRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -501,3 +505,5 @@ func (v *NullableTableConfigRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

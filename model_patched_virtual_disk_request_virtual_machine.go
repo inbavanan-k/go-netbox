@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedVirtualDiskRequestVirtualMachine - struct for PatchedVirtualDiskRequestVirtualMachine
 type PatchedVirtualDiskRequestVirtualMachine struct {
 	BriefVirtualMachineRequest *BriefVirtualMachineRequest
-	Int32                      *int32
+	Int32 *int32
 }
 
 // BriefVirtualMachineRequestAsPatchedVirtualDiskRequestVirtualMachine is a convenience function that returns BriefVirtualMachineRequest wrapped in PatchedVirtualDiskRequestVirtualMachine
@@ -36,6 +35,7 @@ func Int32AsPatchedVirtualDiskRequestVirtualMachine(v *int32) PatchedVirtualDisk
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedVirtualDiskRequestVirtualMachine) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src PatchedVirtualDiskRequestVirtualMachine) MarshalJSON() ([]byte, error)
 }
 
 // Get the actual instance
-func (obj *PatchedVirtualDiskRequestVirtualMachine) GetActualInstance() interface{} {
+func (obj *PatchedVirtualDiskRequestVirtualMachine) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullablePatchedVirtualDiskRequestVirtualMachine) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

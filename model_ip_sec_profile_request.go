@@ -20,14 +20,14 @@ var _ MappedNullable = &IPSecProfileRequest{}
 
 // IPSecProfileRequest Adds support for custom fields and tags.
 type IPSecProfileRequest struct {
-	Name                 string                         `json:"name"`
-	Description          *string                        `json:"description,omitempty"`
-	Mode                 IPSecProfileModeValue          `json:"mode"`
-	IkePolicy            IPSecProfileRequestIkePolicy   `json:"ike_policy"`
-	IpsecPolicy          IPSecProfileRequestIpsecPolicy `json:"ipsec_policy"`
-	Comments             *string                        `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest             `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}         `json:"custom_fields,omitempty"`
+	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
+	Mode IPSecProfileModeValue `json:"mode"`
+	IkePolicy IPSecProfileRequestIkePolicy `json:"ike_policy"`
+	IpsecPolicy IPSecProfileRequestIpsecPolicy `json:"ipsec_policy"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *IPSecProfileRequest) GetNameOk() (*string, bool) {
 func (o *IPSecProfileRequest) SetName(v string) {
 	o.Name = v
 }
+
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IPSecProfileRequest) GetDescription() string {
@@ -134,6 +135,7 @@ func (o *IPSecProfileRequest) SetMode(v IPSecProfileModeValue) {
 	o.Mode = v
 }
 
+
 // GetIkePolicy returns the IkePolicy field value
 func (o *IPSecProfileRequest) GetIkePolicy() IPSecProfileRequestIkePolicy {
 	if o == nil {
@@ -158,6 +160,7 @@ func (o *IPSecProfileRequest) SetIkePolicy(v IPSecProfileRequestIkePolicy) {
 	o.IkePolicy = v
 }
 
+
 // GetIpsecPolicy returns the IpsecPolicy field value
 func (o *IPSecProfileRequest) GetIpsecPolicy() IPSecProfileRequestIpsecPolicy {
 	if o == nil {
@@ -181,6 +184,7 @@ func (o *IPSecProfileRequest) GetIpsecPolicyOk() (*IPSecProfileRequestIpsecPolic
 func (o *IPSecProfileRequest) SetIpsecPolicy(v IPSecProfileRequestIpsecPolicy) {
 	o.IpsecPolicy = v
 }
+
 
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *IPSecProfileRequest) GetComments() string {
@@ -279,7 +283,7 @@ func (o *IPSecProfileRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o IPSecProfileRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -325,31 +329,32 @@ func (o *IPSecProfileRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -415,3 +420,5 @@ func (v *NullableIPSecProfileRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

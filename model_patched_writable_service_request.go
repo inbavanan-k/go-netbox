@@ -19,16 +19,16 @@ var _ MappedNullable = &PatchedWritableServiceRequest{}
 
 // PatchedWritableServiceRequest Adds support for custom fields and tags.
 type PatchedWritableServiceRequest struct {
-	ParentObjectType     *string                                `json:"parent_object_type,omitempty"`
-	ParentObjectId       *int64                                 `json:"parent_object_id,omitempty"`
-	Name                 *string                                `json:"name,omitempty"`
-	Protocol             *PatchedWritableServiceRequestProtocol `json:"protocol,omitempty"`
-	Ports                []int32                                `json:"ports,omitempty"`
-	Ipaddresses          []int32                                `json:"ipaddresses,omitempty"`
-	Description          *string                                `json:"description,omitempty"`
-	Comments             *string                                `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                 `json:"custom_fields,omitempty"`
+	ParentObjectType *string `json:"parent_object_type,omitempty"`
+	ParentObjectId *int64 `json:"parent_object_id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Protocol *PatchedWritableServiceRequestProtocol `json:"protocol,omitempty"`
+	Ports []int32 `json:"ports,omitempty"`
+	Ipaddresses []int32 `json:"ipaddresses,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -372,7 +372,7 @@ func (o *PatchedWritableServiceRequest) SetCustomFields(v map[string]interface{}
 }
 
 func (o PatchedWritableServiceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -484,3 +484,5 @@ func (v *NullablePatchedWritableServiceRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

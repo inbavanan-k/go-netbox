@@ -19,17 +19,17 @@ var _ MappedNullable = &PatchedWritableDeviceRoleRequest{}
 
 // PatchedWritableDeviceRoleRequest Extends PrimaryModelSerializer to include MPTT support.
 type PatchedWritableDeviceRoleRequest struct {
-	Name  *string `json:"name,omitempty"`
-	Slug  *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Name *string `json:"name,omitempty"`
+	Slug *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
 	// Virtual machines may be assigned to this role
-	VmRole               *bool                                   `json:"vm_role,omitempty"`
-	ConfigTemplate       NullableDeviceRoleRequestConfigTemplate `json:"config_template,omitempty"`
-	Parent               NullableInt32                           `json:"parent,omitempty"`
-	Description          *string                                 `json:"description,omitempty"`
-	Tags                 []NestedTagRequest                      `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                  `json:"custom_fields,omitempty"`
-	Comments             *string                                 `json:"comments,omitempty"`
+	VmRole *bool `json:"vm_role,omitempty"`
+	ConfigTemplate NullableDeviceRoleRequestConfigTemplate `json:"config_template,omitempty"`
+	Parent NullableInt32 `json:"parent,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Comments *string `json:"comments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -212,7 +212,6 @@ func (o *PatchedWritableDeviceRoleRequest) HasConfigTemplate() bool {
 func (o *PatchedWritableDeviceRoleRequest) SetConfigTemplate(v DeviceRoleRequestConfigTemplate) {
 	o.ConfigTemplate.Set(&v)
 }
-
 // SetConfigTemplateNil sets the value for ConfigTemplate to be an explicit nil
 func (o *PatchedWritableDeviceRoleRequest) SetConfigTemplateNil() {
 	o.ConfigTemplate.Set(nil)
@@ -255,7 +254,6 @@ func (o *PatchedWritableDeviceRoleRequest) HasParent() bool {
 func (o *PatchedWritableDeviceRoleRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
-
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *PatchedWritableDeviceRoleRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -395,7 +393,7 @@ func (o *PatchedWritableDeviceRoleRequest) SetComments(v string) {
 }
 
 func (o PatchedWritableDeviceRoleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -507,3 +505,5 @@ func (v *NullablePatchedWritableDeviceRoleRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

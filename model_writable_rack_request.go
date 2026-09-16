@@ -20,26 +20,26 @@ var _ MappedNullable = &WritableRackRequest{}
 
 // WritableRackRequest Adds support for custom fields and tags.
 type WritableRackRequest struct {
-	Name       string                                         `json:"name"`
-	FacilityId NullableString                                 `json:"facility_id,omitempty"`
-	Site       DeviceWithConfigContextRequestSite             `json:"site"`
-	Location   NullableDeviceWithConfigContextRequestLocation `json:"location,omitempty"`
-	Tenant     NullableASNRangeRequestTenant                  `json:"tenant,omitempty"`
-	Status     *PatchedWritableRackRequestStatus              `json:"status,omitempty"`
-	Role       NullablePatchedWritableRackRequestRole         `json:"role,omitempty"`
-	Serial     *string                                        `json:"serial,omitempty"`
+	Name string `json:"name"`
+	FacilityId NullableString `json:"facility_id,omitempty"`
+	Site DeviceWithConfigContextRequestSite `json:"site"`
+	Location NullableDeviceWithConfigContextRequestLocation `json:"location,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	Status *PatchedWritableRackRequestStatus `json:"status,omitempty"`
+	Role NullablePatchedWritableRackRequestRole `json:"role,omitempty"`
+	Serial *string `json:"serial,omitempty"`
 	// A unique tag used to identify this rack
-	AssetTag   NullableString                               `json:"asset_tag,omitempty"`
-	RackType   NullablePatchedWritableRackRequestRackType   `json:"rack_type,omitempty"`
+	AssetTag NullableString `json:"asset_tag,omitempty"`
+	RackType NullablePatchedWritableRackRequestRackType `json:"rack_type,omitempty"`
 	FormFactor NullablePatchedWritableRackRequestFormFactor `json:"form_factor,omitempty"`
-	Width      *PatchedWritableRackRequestWidth             `json:"width,omitempty"`
+	Width *PatchedWritableRackRequestWidth `json:"width,omitempty"`
 	// Height in rack units
 	UHeight *int32 `json:"u_height,omitempty"`
 	// Starting unit for rack
-	StartingUnit *int32          `json:"starting_unit,omitempty"`
-	Weight       NullableFloat64 `json:"weight,omitempty"`
+	StartingUnit *int32 `json:"starting_unit,omitempty"`
+	Weight NullableFloat64 `json:"weight,omitempty"`
 	// Maximum load capacity for the rack
-	MaxWeight  NullableInt32                       `json:"max_weight,omitempty"`
+	MaxWeight NullableInt32 `json:"max_weight,omitempty"`
 	WeightUnit NullableDeviceTypeRequestWeightUnit `json:"weight_unit,omitempty"`
 	// Units are numbered top-to-bottom
 	DescUnits *bool `json:"desc_units,omitempty"`
@@ -48,15 +48,15 @@ type WritableRackRequest struct {
 	// Outer dimension of rack (height)
 	OuterHeight NullableInt32 `json:"outer_height,omitempty"`
 	// Outer dimension of rack (depth)
-	OuterDepth NullableInt32                               `json:"outer_depth,omitempty"`
-	OuterUnit  NullablePatchedWritableRackRequestOuterUnit `json:"outer_unit,omitempty"`
+	OuterDepth NullableInt32 `json:"outer_depth,omitempty"`
+	OuterUnit NullablePatchedWritableRackRequestOuterUnit `json:"outer_unit,omitempty"`
 	// Maximum depth of a mounted device, in millimeters. For four-post racks, this is the distance between the front and rear rails.
-	MountingDepth        NullableInt32                             `json:"mounting_depth,omitempty"`
-	Airflow              NullablePatchedWritableRackRequestAirflow `json:"airflow,omitempty"`
-	Description          *string                                   `json:"description,omitempty"`
-	Comments             *string                                   `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                        `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                    `json:"custom_fields,omitempty"`
+	MountingDepth NullableInt32 `json:"mounting_depth,omitempty"`
+	Airflow NullablePatchedWritableRackRequestAirflow `json:"airflow,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -105,6 +105,7 @@ func (o *WritableRackRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetFacilityId returns the FacilityId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableRackRequest) GetFacilityId() string {
 	if o == nil || IsNil(o.FacilityId.Get()) {
@@ -137,7 +138,6 @@ func (o *WritableRackRequest) HasFacilityId() bool {
 func (o *WritableRackRequest) SetFacilityId(v string) {
 	o.FacilityId.Set(&v)
 }
-
 // SetFacilityIdNil sets the value for FacilityId to be an explicit nil
 func (o *WritableRackRequest) SetFacilityIdNil() {
 	o.FacilityId.Set(nil)
@@ -172,6 +172,7 @@ func (o *WritableRackRequest) SetSite(v DeviceWithConfigContextRequestSite) {
 	o.Site = v
 }
 
+
 // GetLocation returns the Location field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableRackRequest) GetLocation() DeviceWithConfigContextRequestLocation {
 	if o == nil || IsNil(o.Location.Get()) {
@@ -204,7 +205,6 @@ func (o *WritableRackRequest) HasLocation() bool {
 func (o *WritableRackRequest) SetLocation(v DeviceWithConfigContextRequestLocation) {
 	o.Location.Set(&v)
 }
-
 // SetLocationNil sets the value for Location to be an explicit nil
 func (o *WritableRackRequest) SetLocationNil() {
 	o.Location.Set(nil)
@@ -247,7 +247,6 @@ func (o *WritableRackRequest) HasTenant() bool {
 func (o *WritableRackRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WritableRackRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -322,7 +321,6 @@ func (o *WritableRackRequest) HasRole() bool {
 func (o *WritableRackRequest) SetRole(v PatchedWritableRackRequestRole) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *WritableRackRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -397,7 +395,6 @@ func (o *WritableRackRequest) HasAssetTag() bool {
 func (o *WritableRackRequest) SetAssetTag(v string) {
 	o.AssetTag.Set(&v)
 }
-
 // SetAssetTagNil sets the value for AssetTag to be an explicit nil
 func (o *WritableRackRequest) SetAssetTagNil() {
 	o.AssetTag.Set(nil)
@@ -440,7 +437,6 @@ func (o *WritableRackRequest) HasRackType() bool {
 func (o *WritableRackRequest) SetRackType(v PatchedWritableRackRequestRackType) {
 	o.RackType.Set(&v)
 }
-
 // SetRackTypeNil sets the value for RackType to be an explicit nil
 func (o *WritableRackRequest) SetRackTypeNil() {
 	o.RackType.Set(nil)
@@ -483,7 +479,6 @@ func (o *WritableRackRequest) HasFormFactor() bool {
 func (o *WritableRackRequest) SetFormFactor(v PatchedWritableRackRequestFormFactor) {
 	o.FormFactor.Set(&v)
 }
-
 // SetFormFactorNil sets the value for FormFactor to be an explicit nil
 func (o *WritableRackRequest) SetFormFactorNil() {
 	o.FormFactor.Set(nil)
@@ -622,7 +617,6 @@ func (o *WritableRackRequest) HasWeight() bool {
 func (o *WritableRackRequest) SetWeight(v float64) {
 	o.Weight.Set(&v)
 }
-
 // SetWeightNil sets the value for Weight to be an explicit nil
 func (o *WritableRackRequest) SetWeightNil() {
 	o.Weight.Set(nil)
@@ -665,7 +659,6 @@ func (o *WritableRackRequest) HasMaxWeight() bool {
 func (o *WritableRackRequest) SetMaxWeight(v int32) {
 	o.MaxWeight.Set(&v)
 }
-
 // SetMaxWeightNil sets the value for MaxWeight to be an explicit nil
 func (o *WritableRackRequest) SetMaxWeightNil() {
 	o.MaxWeight.Set(nil)
@@ -708,7 +701,6 @@ func (o *WritableRackRequest) HasWeightUnit() bool {
 func (o *WritableRackRequest) SetWeightUnit(v DeviceTypeRequestWeightUnit) {
 	o.WeightUnit.Set(&v)
 }
-
 // SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
 func (o *WritableRackRequest) SetWeightUnitNil() {
 	o.WeightUnit.Set(nil)
@@ -783,7 +775,6 @@ func (o *WritableRackRequest) HasOuterWidth() bool {
 func (o *WritableRackRequest) SetOuterWidth(v int32) {
 	o.OuterWidth.Set(&v)
 }
-
 // SetOuterWidthNil sets the value for OuterWidth to be an explicit nil
 func (o *WritableRackRequest) SetOuterWidthNil() {
 	o.OuterWidth.Set(nil)
@@ -826,7 +817,6 @@ func (o *WritableRackRequest) HasOuterHeight() bool {
 func (o *WritableRackRequest) SetOuterHeight(v int32) {
 	o.OuterHeight.Set(&v)
 }
-
 // SetOuterHeightNil sets the value for OuterHeight to be an explicit nil
 func (o *WritableRackRequest) SetOuterHeightNil() {
 	o.OuterHeight.Set(nil)
@@ -869,7 +859,6 @@ func (o *WritableRackRequest) HasOuterDepth() bool {
 func (o *WritableRackRequest) SetOuterDepth(v int32) {
 	o.OuterDepth.Set(&v)
 }
-
 // SetOuterDepthNil sets the value for OuterDepth to be an explicit nil
 func (o *WritableRackRequest) SetOuterDepthNil() {
 	o.OuterDepth.Set(nil)
@@ -912,7 +901,6 @@ func (o *WritableRackRequest) HasOuterUnit() bool {
 func (o *WritableRackRequest) SetOuterUnit(v PatchedWritableRackRequestOuterUnit) {
 	o.OuterUnit.Set(&v)
 }
-
 // SetOuterUnitNil sets the value for OuterUnit to be an explicit nil
 func (o *WritableRackRequest) SetOuterUnitNil() {
 	o.OuterUnit.Set(nil)
@@ -955,7 +943,6 @@ func (o *WritableRackRequest) HasMountingDepth() bool {
 func (o *WritableRackRequest) SetMountingDepth(v int32) {
 	o.MountingDepth.Set(&v)
 }
-
 // SetMountingDepthNil sets the value for MountingDepth to be an explicit nil
 func (o *WritableRackRequest) SetMountingDepthNil() {
 	o.MountingDepth.Set(nil)
@@ -998,7 +985,6 @@ func (o *WritableRackRequest) HasAirflow() bool {
 func (o *WritableRackRequest) SetAirflow(v PatchedWritableRackRequestAirflow) {
 	o.Airflow.Set(&v)
 }
-
 // SetAirflowNil sets the value for Airflow to be an explicit nil
 func (o *WritableRackRequest) SetAirflowNil() {
 	o.Airflow.Set(nil)
@@ -1138,7 +1124,7 @@ func (o *WritableRackRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o WritableRackRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1246,31 +1232,32 @@ func (o *WritableRackRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -1356,3 +1343,5 @@ func (v *NullableWritableRackRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

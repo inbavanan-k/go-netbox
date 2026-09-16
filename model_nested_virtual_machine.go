@@ -20,11 +20,11 @@ var _ MappedNullable = &NestedVirtualMachine{}
 
 // NestedVirtualMachine Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a dictionary of attributes which can be used to uniquely identify the related object. This class should be subclassed to return a full representation of the related object on read.
 type NestedVirtualMachine struct {
-	Id                   int32   `json:"id"`
-	Url                  string  `json:"url"`
-	DisplayUrl           *string `json:"display_url,omitempty"`
-	Display              string  `json:"display"`
-	Name                 string  `json:"name"`
+	Id int32 `json:"id"`
+	Url string `json:"url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
+	Display string `json:"display"`
+	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *NestedVirtualMachine) SetId(v int32) {
 	o.Id = v
 }
 
+
 // GetUrl returns the Url field value
 func (o *NestedVirtualMachine) GetUrl() string {
 	if o == nil {
@@ -98,6 +99,7 @@ func (o *NestedVirtualMachine) GetUrlOk() (*string, bool) {
 func (o *NestedVirtualMachine) SetUrl(v string) {
 	o.Url = v
 }
+
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *NestedVirtualMachine) GetDisplayUrl() string {
@@ -155,6 +157,7 @@ func (o *NestedVirtualMachine) SetDisplay(v string) {
 	o.Display = v
 }
 
+
 // GetName returns the Name field value
 func (o *NestedVirtualMachine) GetName() string {
 	if o == nil {
@@ -179,8 +182,9 @@ func (o *NestedVirtualMachine) SetName(v string) {
 	o.Name = v
 }
 
+
 func (o NestedVirtualMachine) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,31 +221,32 @@ func (o *NestedVirtualMachine) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -304,3 +309,5 @@ func (v *NullableNestedVirtualMachine) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // CircuitRequestProviderAccount - struct for CircuitRequestProviderAccount
 type CircuitRequestProviderAccount struct {
 	BriefProviderAccountRequest *BriefProviderAccountRequest
-	Int32                       *int32
+	Int32 *int32
 }
 
 // BriefProviderAccountRequestAsCircuitRequestProviderAccount is a convenience function that returns BriefProviderAccountRequest wrapped in CircuitRequestProviderAccount
@@ -36,6 +35,7 @@ func Int32AsCircuitRequestProviderAccount(v *int32) CircuitRequestProviderAccoun
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CircuitRequestProviderAccount) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src CircuitRequestProviderAccount) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CircuitRequestProviderAccount) GetActualInstance() interface{} {
+func (obj *CircuitRequestProviderAccount) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableCircuitRequestProviderAccount) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

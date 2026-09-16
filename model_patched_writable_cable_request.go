@@ -19,19 +19,19 @@ var _ MappedNullable = &PatchedWritableCableRequest{}
 
 // PatchedWritableCableRequest Adds support for custom fields and tags.
 type PatchedWritableCableRequest struct {
-	Type                 NullableCableType              `json:"type,omitempty"`
-	ATerminations        []GenericObjectRequest         `json:"a_terminations,omitempty"`
-	BTerminations        []GenericObjectRequest         `json:"b_terminations,omitempty"`
-	Status               *CableStatusValue              `json:"status,omitempty"`
-	Tenant               NullableASNRangeRequestTenant  `json:"tenant,omitempty"`
-	Label                *string                        `json:"label,omitempty"`
-	Color                *string                        `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
-	Length               NullableFloat64                `json:"length,omitempty"`
-	LengthUnit           NullableCableRequestLengthUnit `json:"length_unit,omitempty"`
-	Description          *string                        `json:"description,omitempty"`
-	Comments             *string                        `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest             `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}         `json:"custom_fields,omitempty"`
+	Type NullableCableType `json:"type,omitempty"`
+	ATerminations []GenericObjectRequest `json:"a_terminations,omitempty"`
+	BTerminations []GenericObjectRequest `json:"b_terminations,omitempty"`
+	Status *CableStatusValue `json:"status,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
+	Length NullableFloat64 `json:"length,omitempty"`
+	LengthUnit NullableCableRequestLengthUnit `json:"length_unit,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,7 +86,6 @@ func (o *PatchedWritableCableRequest) HasType() bool {
 func (o *PatchedWritableCableRequest) SetType(v CableType) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *PatchedWritableCableRequest) SetTypeNil() {
 	o.Type.Set(nil)
@@ -225,7 +224,6 @@ func (o *PatchedWritableCableRequest) HasTenant() bool {
 func (o *PatchedWritableCableRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableCableRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -332,7 +330,6 @@ func (o *PatchedWritableCableRequest) HasLength() bool {
 func (o *PatchedWritableCableRequest) SetLength(v float64) {
 	o.Length.Set(&v)
 }
-
 // SetLengthNil sets the value for Length to be an explicit nil
 func (o *PatchedWritableCableRequest) SetLengthNil() {
 	o.Length.Set(nil)
@@ -375,7 +372,6 @@ func (o *PatchedWritableCableRequest) HasLengthUnit() bool {
 func (o *PatchedWritableCableRequest) SetLengthUnit(v CableRequestLengthUnit) {
 	o.LengthUnit.Set(&v)
 }
-
 // SetLengthUnitNil sets the value for LengthUnit to be an explicit nil
 func (o *PatchedWritableCableRequest) SetLengthUnitNil() {
 	o.LengthUnit.Set(nil)
@@ -515,7 +511,7 @@ func (o *PatchedWritableCableRequest) SetCustomFields(v map[string]interface{}) 
 }
 
 func (o PatchedWritableCableRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -639,3 +635,5 @@ func (v *NullablePatchedWritableCableRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

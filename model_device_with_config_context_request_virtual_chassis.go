@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceWithConfigContextRequestVirtualChassis - struct for DeviceWithConfigContextRequestVirtualChassis
 type DeviceWithConfigContextRequestVirtualChassis struct {
 	BriefVirtualChassisRequest *BriefVirtualChassisRequest
-	Int32                      *int32
+	Int32 *int32
 }
 
 // BriefVirtualChassisRequestAsDeviceWithConfigContextRequestVirtualChassis is a convenience function that returns BriefVirtualChassisRequest wrapped in DeviceWithConfigContextRequestVirtualChassis
@@ -36,6 +35,7 @@ func Int32AsDeviceWithConfigContextRequestVirtualChassis(v *int32) DeviceWithCon
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceWithConfigContextRequestVirtualChassis) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src DeviceWithConfigContextRequestVirtualChassis) MarshalJSON() ([]byte, e
 }
 
 // Get the actual instance
-func (obj *DeviceWithConfigContextRequestVirtualChassis) GetActualInstance() interface{} {
+func (obj *DeviceWithConfigContextRequestVirtualChassis) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableDeviceWithConfigContextRequestVirtualChassis) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

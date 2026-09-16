@@ -474,6 +474,8 @@ docs/InterfaceTemplateRequestPoeMode.md
 docs/InterfaceTemplateRequestPoeType.md
 docs/InterfaceTemplateRequestRfRole.md
 docs/InterfaceTemplateRfRole.md
+docs/InterfaceTemplateType.md
+docs/InterfaceTemplateTypeLabel.md
 docs/InterfaceType.md
 docs/InterfaceTypeLabel.md
 docs/InterfaceTypeValue.md
@@ -1578,6 +1580,8 @@ model_interface_template_request_poe_mode.go
 model_interface_template_request_poe_type.go
 model_interface_template_request_rf_role.go
 model_interface_template_rf_role.go
+model_interface_template_type.go
+model_interface_template_type_label.go
 model_interface_type.go
 model_interface_type_label.go
 model_interface_type_value.go
@@ -2267,16 +2271,4 @@ model_writable_wireless_lan_group_request.go
 model_writable_wireless_lan_request.go
 model_writable_wireless_link_request.go
 response.go
-test/api_circuits_test.go
-test/api_core_test.go
-test/api_dcim_test.go
-test/api_extras_test.go
-test/api_ipam_test.go
-test/api_schema_test.go
-test/api_status_test.go
-test/api_tenancy_test.go
-test/api_users_test.go
-test/api_virtualization_test.go
-test/api_vpn_test.go
-test/api_wireless_test.go
 utils.go

@@ -20,13 +20,13 @@ type VirtualMachineWithConfigContextStatusLabel string
 
 // List of VirtualMachineWithConfigContext_status_label
 const (
-	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_OFFLINE         VirtualMachineWithConfigContextStatusLabel = "Offline"
-	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_ACTIVE          VirtualMachineWithConfigContextStatusLabel = "Active"
-	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_PLANNED         VirtualMachineWithConfigContextStatusLabel = "Planned"
-	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_STAGED          VirtualMachineWithConfigContextStatusLabel = "Staged"
-	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_FAILED          VirtualMachineWithConfigContextStatusLabel = "Failed"
+	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_OFFLINE VirtualMachineWithConfigContextStatusLabel = "Offline"
+	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_ACTIVE VirtualMachineWithConfigContextStatusLabel = "Active"
+	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_PLANNED VirtualMachineWithConfigContextStatusLabel = "Planned"
+	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_STAGED VirtualMachineWithConfigContextStatusLabel = "Staged"
+	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_FAILED VirtualMachineWithConfigContextStatusLabel = "Failed"
 	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_DECOMMISSIONING VirtualMachineWithConfigContextStatusLabel = "Decommissioning"
-	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_PAUSED          VirtualMachineWithConfigContextStatusLabel = "Paused"
+	VIRTUALMACHINEWITHCONFIGCONTEXTSTATUSLABEL_PAUSED VirtualMachineWithConfigContextStatusLabel = "Paused"
 )
 
 // All allowed values of VirtualMachineWithConfigContextStatusLabel enum
@@ -118,3 +118,4 @@ func (v *NullableVirtualMachineWithConfigContextStatusLabel) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,11 +20,11 @@ type InventoryItemStatusLabel string
 
 // List of InventoryItem_status_label
 const (
-	INVENTORYITEMSTATUSLABEL_OFFLINE         InventoryItemStatusLabel = "Offline"
-	INVENTORYITEMSTATUSLABEL_ACTIVE          InventoryItemStatusLabel = "Active"
-	INVENTORYITEMSTATUSLABEL_PLANNED         InventoryItemStatusLabel = "Planned"
-	INVENTORYITEMSTATUSLABEL_STAGED          InventoryItemStatusLabel = "Staged"
-	INVENTORYITEMSTATUSLABEL_FAILED          InventoryItemStatusLabel = "Failed"
+	INVENTORYITEMSTATUSLABEL_OFFLINE InventoryItemStatusLabel = "Offline"
+	INVENTORYITEMSTATUSLABEL_ACTIVE InventoryItemStatusLabel = "Active"
+	INVENTORYITEMSTATUSLABEL_PLANNED InventoryItemStatusLabel = "Planned"
+	INVENTORYITEMSTATUSLABEL_STAGED InventoryItemStatusLabel = "Staged"
+	INVENTORYITEMSTATUSLABEL_FAILED InventoryItemStatusLabel = "Failed"
 	INVENTORYITEMSTATUSLABEL_DECOMMISSIONING InventoryItemStatusLabel = "Decommissioning"
 )
 
@@ -116,3 +116,4 @@ func (v *NullableInventoryItemStatusLabel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

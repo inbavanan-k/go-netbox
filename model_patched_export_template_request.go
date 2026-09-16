@@ -20,8 +20,8 @@ var _ MappedNullable = &PatchedExportTemplateRequest{}
 // PatchedExportTemplateRequest Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type PatchedExportTemplateRequest struct {
 	ObjectTypes []string `json:"object_types,omitempty"`
-	Name        *string  `json:"name,omitempty"`
-	Description *string  `json:"description,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Any <a href=\"https://jinja.palletsprojects.com/en/stable/api/#jinja2.Environment\">additional parameters</a> to pass when constructing the Jinja environment
 	EnvironmentParams interface{} `json:"environment_params,omitempty"`
 	// Jinja template code.
@@ -33,8 +33,8 @@ type PatchedExportTemplateRequest struct {
 	// Extension to append to the rendered filename
 	FileExtension *string `json:"file_extension,omitempty"`
 	// Download file as attachment
-	AsAttachment         *bool                           `json:"as_attachment,omitempty"`
-	DataSource           *ConfigContextRequestDataSource `json:"data_source,omitempty"`
+	AsAttachment *bool `json:"as_attachment,omitempty"`
+	DataSource *ConfigContextRequestDataSource `json:"data_source,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -379,7 +379,7 @@ func (o *PatchedExportTemplateRequest) SetDataSource(v ConfigContextRequestDataS
 }
 
 func (o PatchedExportTemplateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -491,3 +491,5 @@ func (v *NullablePatchedExportTemplateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

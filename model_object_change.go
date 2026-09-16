@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the ObjectChange type satisfies the MappedNullable interface at compile time
@@ -21,20 +21,20 @@ var _ MappedNullable = &ObjectChange{}
 
 // ObjectChange struct for ObjectChange
 type ObjectChange struct {
-	Id                   int32              `json:"id"`
-	Url                  string             `json:"url"`
-	DisplayUrl           *string            `json:"display_url,omitempty"`
-	Display              string             `json:"display"`
-	Time                 time.Time          `json:"time"`
-	User                 BriefUser          `json:"user"`
-	UserName             string             `json:"user_name"`
-	RequestId            string             `json:"request_id"`
-	Action               ObjectChangeAction `json:"action"`
-	ChangedObjectType    string             `json:"changed_object_type"`
-	ChangedObjectId      int64              `json:"changed_object_id"`
-	ChangedObject        interface{}        `json:"changed_object,omitempty"`
-	PrechangeData        interface{}        `json:"prechange_data,omitempty"`
-	PostchangeData       interface{}        `json:"postchange_data,omitempty"`
+	Id int32 `json:"id"`
+	Url string `json:"url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
+	Display string `json:"display"`
+	Time time.Time `json:"time"`
+	User BriefUser `json:"user"`
+	UserName string `json:"user_name"`
+	RequestId string `json:"request_id"`
+	Action ObjectChangeAction `json:"action"`
+	ChangedObjectType string `json:"changed_object_type"`
+	ChangedObjectId int64 `json:"changed_object_id"`
+	ChangedObject interface{} `json:"changed_object,omitempty"`
+	PrechangeData interface{} `json:"prechange_data,omitempty"`
+	PostchangeData interface{} `json:"postchange_data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -91,6 +91,7 @@ func (o *ObjectChange) SetId(v int32) {
 	o.Id = v
 }
 
+
 // GetUrl returns the Url field value
 func (o *ObjectChange) GetUrl() string {
 	if o == nil {
@@ -114,6 +115,7 @@ func (o *ObjectChange) GetUrlOk() (*string, bool) {
 func (o *ObjectChange) SetUrl(v string) {
 	o.Url = v
 }
+
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *ObjectChange) GetDisplayUrl() string {
@@ -171,6 +173,7 @@ func (o *ObjectChange) SetDisplay(v string) {
 	o.Display = v
 }
 
+
 // GetTime returns the Time field value
 func (o *ObjectChange) GetTime() time.Time {
 	if o == nil {
@@ -194,6 +197,7 @@ func (o *ObjectChange) GetTimeOk() (*time.Time, bool) {
 func (o *ObjectChange) SetTime(v time.Time) {
 	o.Time = v
 }
+
 
 // GetUser returns the User field value
 func (o *ObjectChange) GetUser() BriefUser {
@@ -219,6 +223,7 @@ func (o *ObjectChange) SetUser(v BriefUser) {
 	o.User = v
 }
 
+
 // GetUserName returns the UserName field value
 func (o *ObjectChange) GetUserName() string {
 	if o == nil {
@@ -242,6 +247,7 @@ func (o *ObjectChange) GetUserNameOk() (*string, bool) {
 func (o *ObjectChange) SetUserName(v string) {
 	o.UserName = v
 }
+
 
 // GetRequestId returns the RequestId field value
 func (o *ObjectChange) GetRequestId() string {
@@ -267,6 +273,7 @@ func (o *ObjectChange) SetRequestId(v string) {
 	o.RequestId = v
 }
 
+
 // GetAction returns the Action field value
 func (o *ObjectChange) GetAction() ObjectChangeAction {
 	if o == nil {
@@ -290,6 +297,7 @@ func (o *ObjectChange) GetActionOk() (*ObjectChangeAction, bool) {
 func (o *ObjectChange) SetAction(v ObjectChangeAction) {
 	o.Action = v
 }
+
 
 // GetChangedObjectType returns the ChangedObjectType field value
 func (o *ObjectChange) GetChangedObjectType() string {
@@ -315,6 +323,7 @@ func (o *ObjectChange) SetChangedObjectType(v string) {
 	o.ChangedObjectType = v
 }
 
+
 // GetChangedObjectId returns the ChangedObjectId field value
 func (o *ObjectChange) GetChangedObjectId() int64 {
 	if o == nil {
@@ -338,6 +347,7 @@ func (o *ObjectChange) GetChangedObjectIdOk() (*int64, bool) {
 func (o *ObjectChange) SetChangedObjectId(v int64) {
 	o.ChangedObjectId = v
 }
+
 
 // GetChangedObject returns the ChangedObject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ObjectChange) GetChangedObject() interface{} {
@@ -439,7 +449,7 @@ func (o *ObjectChange) SetPostchangeData(v interface{}) {
 }
 
 func (o ObjectChange) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -497,31 +507,32 @@ func (o *ObjectChange) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -593,3 +604,5 @@ func (v *NullableObjectChange) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ClusterRequestType - struct for ClusterRequestType
 type ClusterRequestType struct {
 	BriefClusterTypeRequest *BriefClusterTypeRequest
-	Int32                   *int32
+	Int32 *int32
 }
 
 // BriefClusterTypeRequestAsClusterRequestType is a convenience function that returns BriefClusterTypeRequest wrapped in ClusterRequestType
@@ -36,6 +35,7 @@ func Int32AsClusterRequestType(v *int32) ClusterRequestType {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ClusterRequestType) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src ClusterRequestType) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ClusterRequestType) GetActualInstance() interface{} {
+func (obj *ClusterRequestType) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableClusterRequestType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

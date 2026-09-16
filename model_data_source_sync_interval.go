@@ -20,10 +20,10 @@ type DataSourceSyncInterval int32
 
 // List of DataSource_sync_interval
 const (
-	DATASOURCESYNCINTERVAL__1     DataSourceSyncInterval = 1
-	DATASOURCESYNCINTERVAL__60    DataSourceSyncInterval = 60
-	DATASOURCESYNCINTERVAL__720   DataSourceSyncInterval = 720
-	DATASOURCESYNCINTERVAL__1440  DataSourceSyncInterval = 1440
+	DATASOURCESYNCINTERVAL__1 DataSourceSyncInterval = 1
+	DATASOURCESYNCINTERVAL__60 DataSourceSyncInterval = 60
+	DATASOURCESYNCINTERVAL__720 DataSourceSyncInterval = 720
+	DATASOURCESYNCINTERVAL__1440 DataSourceSyncInterval = 1440
 	DATASOURCESYNCINTERVAL__10080 DataSourceSyncInterval = 10080
 	DATASOURCESYNCINTERVAL__43200 DataSourceSyncInterval = 43200
 )
@@ -116,3 +116,4 @@ func (v *NullableDataSourceSyncInterval) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

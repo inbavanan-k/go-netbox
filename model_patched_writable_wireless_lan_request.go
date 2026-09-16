@@ -19,20 +19,20 @@ var _ MappedNullable = &PatchedWritableWirelessLANRequest{}
 
 // PatchedWritableWirelessLANRequest Adds support for custom fields and tags.
 type PatchedWritableWirelessLANRequest struct {
-	Ssid                 *string                                        `json:"ssid,omitempty"`
-	Description          *string                                        `json:"description,omitempty"`
-	Group                NullablePatchedWritableWirelessLANRequestGroup `json:"group,omitempty"`
-	Status               *PatchedWritableWirelessLANRequestStatus       `json:"status,omitempty"`
-	Vlan                 NullableInterfaceRequestUntaggedVlan           `json:"vlan,omitempty"`
-	ScopeType            NullableString                                 `json:"scope_type,omitempty"`
-	ScopeId              NullableInt32                                  `json:"scope_id,omitempty"`
-	Tenant               NullableASNRangeRequestTenant                  `json:"tenant,omitempty"`
-	AuthType             NullableAuthenticationType1                    `json:"auth_type,omitempty"`
-	AuthCipher           NullableAuthenticationCipher                   `json:"auth_cipher,omitempty"`
-	AuthPsk              *string                                        `json:"auth_psk,omitempty"`
-	Comments             *string                                        `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                             `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                         `json:"custom_fields,omitempty"`
+	Ssid *string `json:"ssid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Group NullablePatchedWritableWirelessLANRequestGroup `json:"group,omitempty"`
+	Status *PatchedWritableWirelessLANRequestStatus `json:"status,omitempty"`
+	Vlan NullableInterfaceRequestUntaggedVlan `json:"vlan,omitempty"`
+	ScopeType NullableString `json:"scope_type,omitempty"`
+	ScopeId NullableInt32 `json:"scope_id,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	AuthType NullableAuthenticationType1 `json:"auth_type,omitempty"`
+	AuthCipher NullableAuthenticationCipher `json:"auth_cipher,omitempty"`
+	AuthPsk *string `json:"auth_psk,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -151,7 +151,6 @@ func (o *PatchedWritableWirelessLANRequest) HasGroup() bool {
 func (o *PatchedWritableWirelessLANRequest) SetGroup(v PatchedWritableWirelessLANRequestGroup) {
 	o.Group.Set(&v)
 }
-
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *PatchedWritableWirelessLANRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -226,7 +225,6 @@ func (o *PatchedWritableWirelessLANRequest) HasVlan() bool {
 func (o *PatchedWritableWirelessLANRequest) SetVlan(v InterfaceRequestUntaggedVlan) {
 	o.Vlan.Set(&v)
 }
-
 // SetVlanNil sets the value for Vlan to be an explicit nil
 func (o *PatchedWritableWirelessLANRequest) SetVlanNil() {
 	o.Vlan.Set(nil)
@@ -269,7 +267,6 @@ func (o *PatchedWritableWirelessLANRequest) HasScopeType() bool {
 func (o *PatchedWritableWirelessLANRequest) SetScopeType(v string) {
 	o.ScopeType.Set(&v)
 }
-
 // SetScopeTypeNil sets the value for ScopeType to be an explicit nil
 func (o *PatchedWritableWirelessLANRequest) SetScopeTypeNil() {
 	o.ScopeType.Set(nil)
@@ -312,7 +309,6 @@ func (o *PatchedWritableWirelessLANRequest) HasScopeId() bool {
 func (o *PatchedWritableWirelessLANRequest) SetScopeId(v int32) {
 	o.ScopeId.Set(&v)
 }
-
 // SetScopeIdNil sets the value for ScopeId to be an explicit nil
 func (o *PatchedWritableWirelessLANRequest) SetScopeIdNil() {
 	o.ScopeId.Set(nil)
@@ -355,7 +351,6 @@ func (o *PatchedWritableWirelessLANRequest) HasTenant() bool {
 func (o *PatchedWritableWirelessLANRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableWirelessLANRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -398,7 +393,6 @@ func (o *PatchedWritableWirelessLANRequest) HasAuthType() bool {
 func (o *PatchedWritableWirelessLANRequest) SetAuthType(v AuthenticationType1) {
 	o.AuthType.Set(&v)
 }
-
 // SetAuthTypeNil sets the value for AuthType to be an explicit nil
 func (o *PatchedWritableWirelessLANRequest) SetAuthTypeNil() {
 	o.AuthType.Set(nil)
@@ -441,7 +435,6 @@ func (o *PatchedWritableWirelessLANRequest) HasAuthCipher() bool {
 func (o *PatchedWritableWirelessLANRequest) SetAuthCipher(v AuthenticationCipher) {
 	o.AuthCipher.Set(&v)
 }
-
 // SetAuthCipherNil sets the value for AuthCipher to be an explicit nil
 func (o *PatchedWritableWirelessLANRequest) SetAuthCipherNil() {
 	o.AuthCipher.Set(nil)
@@ -581,7 +574,7 @@ func (o *PatchedWritableWirelessLANRequest) SetCustomFields(v map[string]interfa
 }
 
 func (o PatchedWritableWirelessLANRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -709,3 +702,5 @@ func (v *NullablePatchedWritableWirelessLANRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,16 +20,16 @@ var _ MappedNullable = &WritableServiceRequest{}
 
 // WritableServiceRequest Adds support for custom fields and tags.
 type WritableServiceRequest struct {
-	ParentObjectType     string                                `json:"parent_object_type"`
-	ParentObjectId       int64                                 `json:"parent_object_id"`
-	Name                 string                                `json:"name"`
-	Protocol             PatchedWritableServiceRequestProtocol `json:"protocol"`
-	Ports                []int32                               `json:"ports"`
-	Ipaddresses          []int32                               `json:"ipaddresses,omitempty"`
-	Description          *string                               `json:"description,omitempty"`
-	Comments             *string                               `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest                    `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                `json:"custom_fields,omitempty"`
+	ParentObjectType string `json:"parent_object_type"`
+	ParentObjectId int64 `json:"parent_object_id"`
+	Name string `json:"name"`
+	Protocol PatchedWritableServiceRequestProtocol `json:"protocol"`
+	Ports []int32 `json:"ports"`
+	Ipaddresses []int32 `json:"ipaddresses,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *WritableServiceRequest) SetParentObjectType(v string) {
 	o.ParentObjectType = v
 }
 
+
 // GetParentObjectId returns the ParentObjectId field value
 func (o *WritableServiceRequest) GetParentObjectId() int64 {
 	if o == nil {
@@ -104,6 +105,7 @@ func (o *WritableServiceRequest) GetParentObjectIdOk() (*int64, bool) {
 func (o *WritableServiceRequest) SetParentObjectId(v int64) {
 	o.ParentObjectId = v
 }
+
 
 // GetName returns the Name field value
 func (o *WritableServiceRequest) GetName() string {
@@ -129,6 +131,7 @@ func (o *WritableServiceRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetProtocol returns the Protocol field value
 func (o *WritableServiceRequest) GetProtocol() PatchedWritableServiceRequestProtocol {
 	if o == nil {
@@ -153,6 +156,7 @@ func (o *WritableServiceRequest) SetProtocol(v PatchedWritableServiceRequestProt
 	o.Protocol = v
 }
 
+
 // GetPorts returns the Ports field value
 func (o *WritableServiceRequest) GetPorts() []int32 {
 	if o == nil {
@@ -176,6 +180,7 @@ func (o *WritableServiceRequest) GetPortsOk() ([]int32, bool) {
 func (o *WritableServiceRequest) SetPorts(v []int32) {
 	o.Ports = v
 }
+
 
 // GetIpaddresses returns the Ipaddresses field value if set, zero value otherwise.
 func (o *WritableServiceRequest) GetIpaddresses() []int32 {
@@ -338,7 +343,7 @@ func (o *WritableServiceRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o WritableServiceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -389,31 +394,32 @@ func (o *WritableServiceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -481,3 +487,5 @@ func (v *NullableWritableServiceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

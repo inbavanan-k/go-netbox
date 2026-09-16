@@ -19,13 +19,13 @@ var _ MappedNullable = &PatchedWritableRegionRequest{}
 
 // PatchedWritableRegionRequest Extends PrimaryModelSerializer to include MPTT support.
 type PatchedWritableRegionRequest struct {
-	Name                 *string                `json:"name,omitempty"`
-	Slug                 *string                `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Parent               NullableInt32          `json:"parent,omitempty"`
-	Description          *string                `json:"description,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Slug *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Parent NullableInt32 `json:"parent,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Comments *string `json:"comments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,7 +144,6 @@ func (o *PatchedWritableRegionRequest) HasParent() bool {
 func (o *PatchedWritableRegionRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
-
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *PatchedWritableRegionRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -284,7 +283,7 @@ func (o *PatchedWritableRegionRequest) SetComments(v string) {
 }
 
 func (o PatchedWritableRegionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -384,3 +383,5 @@ func (v *NullablePatchedWritableRegionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

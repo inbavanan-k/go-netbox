@@ -20,8 +20,8 @@ type L2VPNStatusLabel string
 
 // List of L2VPN_status_label
 const (
-	L2VPNSTATUSLABEL_ACTIVE          L2VPNStatusLabel = "Active"
-	L2VPNSTATUSLABEL_PLANNED         L2VPNStatusLabel = "Planned"
+	L2VPNSTATUSLABEL_ACTIVE L2VPNStatusLabel = "Active"
+	L2VPNSTATUSLABEL_PLANNED L2VPNStatusLabel = "Planned"
 	L2VPNSTATUSLABEL_DECOMMISSIONING L2VPNStatusLabel = "Decommissioning"
 )
 
@@ -110,3 +110,4 @@ func (v *NullableL2VPNStatusLabel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,11 +20,11 @@ type InventoryItemStatusValue string
 
 // List of InventoryItem_status_value
 const (
-	INVENTORYITEMSTATUSVALUE_OFFLINE         InventoryItemStatusValue = "offline"
-	INVENTORYITEMSTATUSVALUE_ACTIVE          InventoryItemStatusValue = "active"
-	INVENTORYITEMSTATUSVALUE_PLANNED         InventoryItemStatusValue = "planned"
-	INVENTORYITEMSTATUSVALUE_STAGED          InventoryItemStatusValue = "staged"
-	INVENTORYITEMSTATUSVALUE_FAILED          InventoryItemStatusValue = "failed"
+	INVENTORYITEMSTATUSVALUE_OFFLINE InventoryItemStatusValue = "offline"
+	INVENTORYITEMSTATUSVALUE_ACTIVE InventoryItemStatusValue = "active"
+	INVENTORYITEMSTATUSVALUE_PLANNED InventoryItemStatusValue = "planned"
+	INVENTORYITEMSTATUSVALUE_STAGED InventoryItemStatusValue = "staged"
+	INVENTORYITEMSTATUSVALUE_FAILED InventoryItemStatusValue = "failed"
 	INVENTORYITEMSTATUSVALUE_DECOMMISSIONING InventoryItemStatusValue = "decommissioning"
 )
 
@@ -116,3 +116,4 @@ func (v *NullableInventoryItemStatusValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

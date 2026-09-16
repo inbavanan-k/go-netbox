@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedTenantRequestGroup - struct for PatchedTenantRequestGroup
 type PatchedTenantRequestGroup struct {
 	BriefTenantGroupRequest *BriefTenantGroupRequest
-	Int32                   *int32
+	Int32 *int32
 }
 
 // BriefTenantGroupRequestAsPatchedTenantRequestGroup is a convenience function that returns BriefTenantGroupRequest wrapped in PatchedTenantRequestGroup
@@ -36,6 +35,7 @@ func Int32AsPatchedTenantRequestGroup(v *int32) PatchedTenantRequestGroup {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedTenantRequestGroup) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedTenantRequestGroup) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *PatchedTenantRequestGroup) GetActualInstance() interface{} {
+func (obj *PatchedTenantRequestGroup) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedTenantRequestGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

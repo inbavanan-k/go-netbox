@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceWithConfigContextRequestPrimaryIp4 - struct for DeviceWithConfigContextRequestPrimaryIp4
 type DeviceWithConfigContextRequestPrimaryIp4 struct {
 	BriefIPAddressRequest *BriefIPAddressRequest
-	Int32                 *int32
+	Int32 *int32
 }
 
 // BriefIPAddressRequestAsDeviceWithConfigContextRequestPrimaryIp4 is a convenience function that returns BriefIPAddressRequest wrapped in DeviceWithConfigContextRequestPrimaryIp4
@@ -36,6 +35,7 @@ func Int32AsDeviceWithConfigContextRequestPrimaryIp4(v *int32) DeviceWithConfigC
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceWithConfigContextRequestPrimaryIp4) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src DeviceWithConfigContextRequestPrimaryIp4) MarshalJSON() ([]byte, error
 }
 
 // Get the actual instance
-func (obj *DeviceWithConfigContextRequestPrimaryIp4) GetActualInstance() interface{} {
+func (obj *DeviceWithConfigContextRequestPrimaryIp4) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableDeviceWithConfigContextRequestPrimaryIp4) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ContactAssignmentRequestRole - struct for ContactAssignmentRequestRole
 type ContactAssignmentRequestRole struct {
 	BriefContactRoleRequest *BriefContactRoleRequest
-	Int32                   *int32
+	Int32 *int32
 }
 
 // BriefContactRoleRequestAsContactAssignmentRequestRole is a convenience function that returns BriefContactRoleRequest wrapped in ContactAssignmentRequestRole
@@ -36,6 +35,7 @@ func Int32AsContactAssignmentRequestRole(v *int32) ContactAssignmentRequestRole 
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ContactAssignmentRequestRole) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src ContactAssignmentRequestRole) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ContactAssignmentRequestRole) GetActualInstance() interface{} {
+func (obj *ContactAssignmentRequestRole) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableContactAssignmentRequestRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

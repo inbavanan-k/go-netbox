@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // BriefDeviceTypeRequestManufacturer - struct for BriefDeviceTypeRequestManufacturer
 type BriefDeviceTypeRequestManufacturer struct {
 	BriefManufacturerRequest *BriefManufacturerRequest
-	Int32                    *int32
+	Int32 *int32
 }
 
 // BriefManufacturerRequestAsBriefDeviceTypeRequestManufacturer is a convenience function that returns BriefManufacturerRequest wrapped in BriefDeviceTypeRequestManufacturer
@@ -36,6 +35,7 @@ func Int32AsBriefDeviceTypeRequestManufacturer(v *int32) BriefDeviceTypeRequestM
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *BriefDeviceTypeRequestManufacturer) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src BriefDeviceTypeRequestManufacturer) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *BriefDeviceTypeRequestManufacturer) GetActualInstance() interface{} {
+func (obj *BriefDeviceTypeRequestManufacturer) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableBriefDeviceTypeRequestManufacturer) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

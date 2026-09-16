@@ -19,8 +19,8 @@ var _ MappedNullable = &VirtualMachineWithConfigContextStatus{}
 
 // VirtualMachineWithConfigContextStatus struct for VirtualMachineWithConfigContextStatus
 type VirtualMachineWithConfigContextStatus struct {
-	Value                *PatchedWritableVirtualMachineWithConfigContextRequestStatus `json:"value,omitempty"`
-	Label                *VirtualMachineWithConfigContextStatusLabel                  `json:"label,omitempty"`
+	Value *PatchedWritableVirtualMachineWithConfigContextRequestStatus `json:"value,omitempty"`
+	Label *VirtualMachineWithConfigContextStatusLabel `json:"label,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,7 @@ func (o *VirtualMachineWithConfigContextStatus) SetLabel(v VirtualMachineWithCon
 }
 
 func (o VirtualMachineWithConfigContextStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,3 +188,5 @@ func (v *NullableVirtualMachineWithConfigContextStatus) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

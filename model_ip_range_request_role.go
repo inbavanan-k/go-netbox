@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // IPRangeRequestRole - struct for IPRangeRequestRole
 type IPRangeRequestRole struct {
 	BriefRoleRequest *BriefRoleRequest
-	Int32            *int32
+	Int32 *int32
 }
 
 // BriefRoleRequestAsIPRangeRequestRole is a convenience function that returns BriefRoleRequest wrapped in IPRangeRequestRole
@@ -36,6 +35,7 @@ func Int32AsIPRangeRequestRole(v *int32) IPRangeRequestRole {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *IPRangeRequestRole) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src IPRangeRequestRole) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *IPRangeRequestRole) GetActualInstance() interface{} {
+func (obj *IPRangeRequestRole) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableIPRangeRequestRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

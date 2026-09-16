@@ -20,17 +20,17 @@ var _ MappedNullable = &DeviceRoleRequest{}
 
 // DeviceRoleRequest Extends PrimaryModelSerializer to include MPTT support.
 type DeviceRoleRequest struct {
-	Name  string  `json:"name"`
-	Slug  string  `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Name string `json:"name"`
+	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
 	// Virtual machines may be assigned to this role
-	VmRole               *bool                                   `json:"vm_role,omitempty"`
-	ConfigTemplate       NullableDeviceRoleRequestConfigTemplate `json:"config_template,omitempty"`
-	Parent               NullableNestedDeviceRoleRequest         `json:"parent,omitempty"`
-	Description          *string                                 `json:"description,omitempty"`
-	Tags                 []NestedTagRequest                      `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                  `json:"custom_fields,omitempty"`
-	Comments             *string                                 `json:"comments,omitempty"`
+	VmRole *bool `json:"vm_role,omitempty"`
+	ConfigTemplate NullableDeviceRoleRequestConfigTemplate `json:"config_template,omitempty"`
+	Parent NullableNestedDeviceRoleRequest `json:"parent,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Comments *string `json:"comments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,6 +79,7 @@ func (o *DeviceRoleRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetSlug returns the Slug field value
 func (o *DeviceRoleRequest) GetSlug() string {
 	if o == nil {
@@ -102,6 +103,7 @@ func (o *DeviceRoleRequest) GetSlugOk() (*string, bool) {
 func (o *DeviceRoleRequest) SetSlug(v string) {
 	o.Slug = v
 }
+
 
 // GetColor returns the Color field value if set, zero value otherwise.
 func (o *DeviceRoleRequest) GetColor() string {
@@ -199,7 +201,6 @@ func (o *DeviceRoleRequest) HasConfigTemplate() bool {
 func (o *DeviceRoleRequest) SetConfigTemplate(v DeviceRoleRequestConfigTemplate) {
 	o.ConfigTemplate.Set(&v)
 }
-
 // SetConfigTemplateNil sets the value for ConfigTemplate to be an explicit nil
 func (o *DeviceRoleRequest) SetConfigTemplateNil() {
 	o.ConfigTemplate.Set(nil)
@@ -242,7 +243,6 @@ func (o *DeviceRoleRequest) HasParent() bool {
 func (o *DeviceRoleRequest) SetParent(v NestedDeviceRoleRequest) {
 	o.Parent.Set(&v)
 }
-
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *DeviceRoleRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -382,7 +382,7 @@ func (o *DeviceRoleRequest) SetComments(v string) {
 }
 
 func (o DeviceRoleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -436,31 +436,32 @@ func (o *DeviceRoleRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -528,3 +529,5 @@ func (v *NullableDeviceRoleRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

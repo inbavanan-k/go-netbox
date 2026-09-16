@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableVirtualCircuitTerminationRequestInterface - struct for PatchedWritableVirtualCircuitTerminationRequestInterface
 type PatchedWritableVirtualCircuitTerminationRequestInterface struct {
 	BriefInterfaceRequest *BriefInterfaceRequest
-	Int32                 *int32
+	Int32 *int32
 }
 
 // BriefInterfaceRequestAsPatchedWritableVirtualCircuitTerminationRequestInterface is a convenience function that returns BriefInterfaceRequest wrapped in PatchedWritableVirtualCircuitTerminationRequestInterface
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableVirtualCircuitTerminationRequestInterface(v *int32) P
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableVirtualCircuitTerminationRequestInterface) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src PatchedWritableVirtualCircuitTerminationRequestInterface) MarshalJSON(
 }
 
 // Get the actual instance
-func (obj *PatchedWritableVirtualCircuitTerminationRequestInterface) GetActualInstance() interface{} {
+func (obj *PatchedWritableVirtualCircuitTerminationRequestInterface) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullablePatchedWritableVirtualCircuitTerminationRequestInterface) Unmar
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

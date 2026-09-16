@@ -19,17 +19,17 @@ var _ MappedNullable = &PatchedWritableIKEProposalRequest{}
 
 // PatchedWritableIKEProposalRequest Adds support for custom fields and tags.
 type PatchedWritableIKEProposalRequest struct {
-	Name                    *string                                                          `json:"name,omitempty"`
-	Description             *string                                                          `json:"description,omitempty"`
-	AuthenticationMethod    *IKEProposalAuthenticationMethodValue                            `json:"authentication_method,omitempty"`
-	EncryptionAlgorithm     *IKEProposalEncryptionAlgorithmValue                             `json:"encryption_algorithm,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	AuthenticationMethod *IKEProposalAuthenticationMethodValue `json:"authentication_method,omitempty"`
+	EncryptionAlgorithm *IKEProposalEncryptionAlgorithmValue `json:"encryption_algorithm,omitempty"`
 	AuthenticationAlgorithm NullablePatchedWritableIKEProposalRequestAuthenticationAlgorithm `json:"authentication_algorithm,omitempty"`
-	Group                   *PatchedWritableIKEProposalRequestGroup                          `json:"group,omitempty"`
+	Group *PatchedWritableIKEProposalRequestGroup `json:"group,omitempty"`
 	// Security association lifetime (in seconds)
-	SaLifetime           NullableInt32          `json:"sa_lifetime,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	SaLifetime NullableInt32 `json:"sa_lifetime,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -212,7 +212,6 @@ func (o *PatchedWritableIKEProposalRequest) HasAuthenticationAlgorithm() bool {
 func (o *PatchedWritableIKEProposalRequest) SetAuthenticationAlgorithm(v PatchedWritableIKEProposalRequestAuthenticationAlgorithm) {
 	o.AuthenticationAlgorithm.Set(&v)
 }
-
 // SetAuthenticationAlgorithmNil sets the value for AuthenticationAlgorithm to be an explicit nil
 func (o *PatchedWritableIKEProposalRequest) SetAuthenticationAlgorithmNil() {
 	o.AuthenticationAlgorithm.Set(nil)
@@ -287,7 +286,6 @@ func (o *PatchedWritableIKEProposalRequest) HasSaLifetime() bool {
 func (o *PatchedWritableIKEProposalRequest) SetSaLifetime(v int32) {
 	o.SaLifetime.Set(&v)
 }
-
 // SetSaLifetimeNil sets the value for SaLifetime to be an explicit nil
 func (o *PatchedWritableIKEProposalRequest) SetSaLifetimeNil() {
 	o.SaLifetime.Set(nil)
@@ -395,7 +393,7 @@ func (o *PatchedWritableIKEProposalRequest) SetCustomFields(v map[string]interfa
 }
 
 func (o PatchedWritableIKEProposalRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -507,3 +505,5 @@ func (v *NullablePatchedWritableIKEProposalRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

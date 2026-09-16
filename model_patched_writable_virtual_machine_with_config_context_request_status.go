@@ -20,13 +20,13 @@ type PatchedWritableVirtualMachineWithConfigContextRequestStatus string
 
 // List of PatchedWritableVirtualMachineWithConfigContextRequest_status
 const (
-	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_OFFLINE         PatchedWritableVirtualMachineWithConfigContextRequestStatus = "offline"
-	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_ACTIVE          PatchedWritableVirtualMachineWithConfigContextRequestStatus = "active"
-	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_PLANNED         PatchedWritableVirtualMachineWithConfigContextRequestStatus = "planned"
-	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_STAGED          PatchedWritableVirtualMachineWithConfigContextRequestStatus = "staged"
-	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_FAILED          PatchedWritableVirtualMachineWithConfigContextRequestStatus = "failed"
+	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_OFFLINE PatchedWritableVirtualMachineWithConfigContextRequestStatus = "offline"
+	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_ACTIVE PatchedWritableVirtualMachineWithConfigContextRequestStatus = "active"
+	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_PLANNED PatchedWritableVirtualMachineWithConfigContextRequestStatus = "planned"
+	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_STAGED PatchedWritableVirtualMachineWithConfigContextRequestStatus = "staged"
+	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_FAILED PatchedWritableVirtualMachineWithConfigContextRequestStatus = "failed"
 	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_DECOMMISSIONING PatchedWritableVirtualMachineWithConfigContextRequestStatus = "decommissioning"
-	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_PAUSED          PatchedWritableVirtualMachineWithConfigContextRequestStatus = "paused"
+	PATCHEDWRITABLEVIRTUALMACHINEWITHCONFIGCONTEXTREQUESTSTATUS_PAUSED PatchedWritableVirtualMachineWithConfigContextRequestStatus = "paused"
 )
 
 // All allowed values of PatchedWritableVirtualMachineWithConfigContextRequestStatus enum
@@ -118,3 +118,4 @@ func (v *NullablePatchedWritableVirtualMachineWithConfigContextRequestStatus) Un
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

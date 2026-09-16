@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // BriefInterfaceRequestDevice - struct for BriefInterfaceRequestDevice
 type BriefInterfaceRequestDevice struct {
 	BriefDeviceRequest *BriefDeviceRequest
-	Int32              *int32
+	Int32 *int32
 }
 
 // BriefDeviceRequestAsBriefInterfaceRequestDevice is a convenience function that returns BriefDeviceRequest wrapped in BriefInterfaceRequestDevice
@@ -36,6 +35,7 @@ func Int32AsBriefInterfaceRequestDevice(v *int32) BriefInterfaceRequestDevice {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *BriefInterfaceRequestDevice) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src BriefInterfaceRequestDevice) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *BriefInterfaceRequestDevice) GetActualInstance() interface{} {
+func (obj *BriefInterfaceRequestDevice) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableBriefInterfaceRequestDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

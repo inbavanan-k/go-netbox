@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the TableConfig type satisfies the MappedNullable interface at compile time
@@ -21,22 +21,22 @@ var _ MappedNullable = &TableConfig{}
 
 // TableConfig Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type TableConfig struct {
-	Id                   int32         `json:"id"`
-	Url                  string        `json:"url"`
-	DisplayUrl           *string       `json:"display_url,omitempty"`
-	Display              string        `json:"display"`
-	ObjectType           string        `json:"object_type"`
-	Table                string        `json:"table"`
-	Name                 string        `json:"name"`
-	Description          *string       `json:"description,omitempty"`
-	User                 NullableInt32 `json:"user,omitempty"`
-	Weight               *int32        `json:"weight,omitempty"`
-	Enabled              *bool         `json:"enabled,omitempty"`
-	Shared               *bool         `json:"shared,omitempty"`
-	Columns              []string      `json:"columns"`
-	Ordering             []string      `json:"ordering,omitempty"`
-	Created              NullableTime  `json:"created,omitempty"`
-	LastUpdated          NullableTime  `json:"last_updated,omitempty"`
+	Id int32 `json:"id"`
+	Url string `json:"url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
+	Display string `json:"display"`
+	ObjectType string `json:"object_type"`
+	Table string `json:"table"`
+	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
+	User NullableInt32 `json:"user,omitempty"`
+	Weight *int32 `json:"weight,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Shared *bool `json:"shared,omitempty"`
+	Columns []string `json:"columns"`
+	Ordering []string `json:"ordering,omitempty"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -90,6 +90,7 @@ func (o *TableConfig) SetId(v int32) {
 	o.Id = v
 }
 
+
 // GetUrl returns the Url field value
 func (o *TableConfig) GetUrl() string {
 	if o == nil {
@@ -113,6 +114,7 @@ func (o *TableConfig) GetUrlOk() (*string, bool) {
 func (o *TableConfig) SetUrl(v string) {
 	o.Url = v
 }
+
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *TableConfig) GetDisplayUrl() string {
@@ -170,6 +172,7 @@ func (o *TableConfig) SetDisplay(v string) {
 	o.Display = v
 }
 
+
 // GetObjectType returns the ObjectType field value
 func (o *TableConfig) GetObjectType() string {
 	if o == nil {
@@ -193,6 +196,7 @@ func (o *TableConfig) GetObjectTypeOk() (*string, bool) {
 func (o *TableConfig) SetObjectType(v string) {
 	o.ObjectType = v
 }
+
 
 // GetTable returns the Table field value
 func (o *TableConfig) GetTable() string {
@@ -218,6 +222,7 @@ func (o *TableConfig) SetTable(v string) {
 	o.Table = v
 }
 
+
 // GetName returns the Name field value
 func (o *TableConfig) GetName() string {
 	if o == nil {
@@ -241,6 +246,7 @@ func (o *TableConfig) GetNameOk() (*string, bool) {
 func (o *TableConfig) SetName(v string) {
 	o.Name = v
 }
+
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TableConfig) GetDescription() string {
@@ -306,7 +312,6 @@ func (o *TableConfig) HasUser() bool {
 func (o *TableConfig) SetUser(v int32) {
 	o.User.Set(&v)
 }
-
 // SetUserNil sets the value for User to be an explicit nil
 func (o *TableConfig) SetUserNil() {
 	o.User.Set(nil)
@@ -437,6 +442,7 @@ func (o *TableConfig) SetColumns(v []string) {
 	o.Columns = v
 }
 
+
 // GetOrdering returns the Ordering field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TableConfig) GetOrdering() []string {
 	if o == nil {
@@ -502,7 +508,6 @@ func (o *TableConfig) HasCreated() bool {
 func (o *TableConfig) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
-
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *TableConfig) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -545,7 +550,6 @@ func (o *TableConfig) HasLastUpdated() bool {
 func (o *TableConfig) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
-
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *TableConfig) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -557,7 +561,7 @@ func (o *TableConfig) UnsetLastUpdated() {
 }
 
 func (o TableConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -624,31 +628,32 @@ func (o *TableConfig) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -722,3 +727,5 @@ func (v *NullableTableConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

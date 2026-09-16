@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // InventoryItemRequestManufacturer - struct for InventoryItemRequestManufacturer
 type InventoryItemRequestManufacturer struct {
 	BriefManufacturerRequest *BriefManufacturerRequest
-	Int32                    *int32
+	Int32 *int32
 }
 
 // BriefManufacturerRequestAsInventoryItemRequestManufacturer is a convenience function that returns BriefManufacturerRequest wrapped in InventoryItemRequestManufacturer
@@ -36,6 +35,7 @@ func Int32AsInventoryItemRequestManufacturer(v *int32) InventoryItemRequestManuf
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *InventoryItemRequestManufacturer) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src InventoryItemRequestManufacturer) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *InventoryItemRequestManufacturer) GetActualInstance() interface{} {
+func (obj *InventoryItemRequestManufacturer) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableInventoryItemRequestManufacturer) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

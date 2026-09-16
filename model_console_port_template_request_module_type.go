@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ConsolePortTemplateRequestModuleType - struct for ConsolePortTemplateRequestModuleType
 type ConsolePortTemplateRequestModuleType struct {
 	BriefModuleTypeRequest *BriefModuleTypeRequest
-	Int32                  *int32
+	Int32 *int32
 }
 
 // BriefModuleTypeRequestAsConsolePortTemplateRequestModuleType is a convenience function that returns BriefModuleTypeRequest wrapped in ConsolePortTemplateRequestModuleType
@@ -36,6 +35,7 @@ func Int32AsConsolePortTemplateRequestModuleType(v *int32) ConsolePortTemplateRe
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ConsolePortTemplateRequestModuleType) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src ConsolePortTemplateRequestModuleType) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ConsolePortTemplateRequestModuleType) GetActualInstance() interface{} {
+func (obj *ConsolePortTemplateRequestModuleType) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableConsolePortTemplateRequestModuleType) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

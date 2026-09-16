@@ -20,22 +20,22 @@ var _ MappedNullable = &PrefixRequest{}
 
 // PrefixRequest Adds support for custom fields and tags.
 type PrefixRequest struct {
-	Prefix    string                               `json:"prefix"`
-	Vrf       NullableIPAddressRequestVrf          `json:"vrf,omitempty"`
-	ScopeType NullableString                       `json:"scope_type,omitempty"`
-	ScopeId   NullableInt32                        `json:"scope_id,omitempty"`
-	Tenant    NullableASNRangeRequestTenant        `json:"tenant,omitempty"`
-	Vlan      NullableInterfaceRequestUntaggedVlan `json:"vlan,omitempty"`
-	Status    *PrefixStatusValue                   `json:"status,omitempty"`
-	Role      NullableIPRangeRequestRole           `json:"role,omitempty"`
+	Prefix string `json:"prefix"`
+	Vrf NullableIPAddressRequestVrf `json:"vrf,omitempty"`
+	ScopeType NullableString `json:"scope_type,omitempty"`
+	ScopeId NullableInt32 `json:"scope_id,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	Vlan NullableInterfaceRequestUntaggedVlan `json:"vlan,omitempty"`
+	Status *PrefixStatusValue `json:"status,omitempty"`
+	Role NullableIPRangeRequestRole `json:"role,omitempty"`
 	// All IP addresses within this prefix are considered usable
 	IsPool *bool `json:"is_pool,omitempty"`
 	// Treat as fully utilized
-	MarkUtilized         *bool                  `json:"mark_utilized,omitempty"`
-	Description          *string                `json:"description,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	MarkUtilized *bool `json:"mark_utilized,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,6 +83,7 @@ func (o *PrefixRequest) SetPrefix(v string) {
 	o.Prefix = v
 }
 
+
 // GetVrf returns the Vrf field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrefixRequest) GetVrf() IPAddressRequestVrf {
 	if o == nil || IsNil(o.Vrf.Get()) {
@@ -115,7 +116,6 @@ func (o *PrefixRequest) HasVrf() bool {
 func (o *PrefixRequest) SetVrf(v IPAddressRequestVrf) {
 	o.Vrf.Set(&v)
 }
-
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *PrefixRequest) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -158,7 +158,6 @@ func (o *PrefixRequest) HasScopeType() bool {
 func (o *PrefixRequest) SetScopeType(v string) {
 	o.ScopeType.Set(&v)
 }
-
 // SetScopeTypeNil sets the value for ScopeType to be an explicit nil
 func (o *PrefixRequest) SetScopeTypeNil() {
 	o.ScopeType.Set(nil)
@@ -201,7 +200,6 @@ func (o *PrefixRequest) HasScopeId() bool {
 func (o *PrefixRequest) SetScopeId(v int32) {
 	o.ScopeId.Set(&v)
 }
-
 // SetScopeIdNil sets the value for ScopeId to be an explicit nil
 func (o *PrefixRequest) SetScopeIdNil() {
 	o.ScopeId.Set(nil)
@@ -244,7 +242,6 @@ func (o *PrefixRequest) HasTenant() bool {
 func (o *PrefixRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PrefixRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -287,7 +284,6 @@ func (o *PrefixRequest) HasVlan() bool {
 func (o *PrefixRequest) SetVlan(v InterfaceRequestUntaggedVlan) {
 	o.Vlan.Set(&v)
 }
-
 // SetVlanNil sets the value for Vlan to be an explicit nil
 func (o *PrefixRequest) SetVlanNil() {
 	o.Vlan.Set(nil)
@@ -362,7 +358,6 @@ func (o *PrefixRequest) HasRole() bool {
 func (o *PrefixRequest) SetRole(v IPRangeRequestRole) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *PrefixRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -566,7 +561,7 @@ func (o *PrefixRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o PrefixRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -633,31 +628,32 @@ func (o *PrefixRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -729,3 +725,5 @@ func (v *NullablePrefixRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

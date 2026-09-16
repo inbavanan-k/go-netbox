@@ -20,13 +20,13 @@ var _ MappedNullable = &PlatformRequest{}
 
 // PlatformRequest Adds support for custom fields and tags.
 type PlatformRequest struct {
-	Name                 string                                   `json:"name"`
-	Slug                 string                                   `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Manufacturer         NullableInventoryItemRequestManufacturer `json:"manufacturer,omitempty"`
-	ConfigTemplate       NullableDeviceRoleRequestConfigTemplate  `json:"config_template,omitempty"`
-	Description          *string                                  `json:"description,omitempty"`
-	Tags                 []NestedTagRequest                       `json:"tags,omitempty"`
-	CustomFields         map[string]interface{}                   `json:"custom_fields,omitempty"`
+	Name string `json:"name"`
+	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Manufacturer NullableInventoryItemRequestManufacturer `json:"manufacturer,omitempty"`
+	ConfigTemplate NullableDeviceRoleRequestConfigTemplate `json:"config_template,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *PlatformRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetSlug returns the Slug field value
 func (o *PlatformRequest) GetSlug() string {
 	if o == nil {
@@ -98,6 +99,7 @@ func (o *PlatformRequest) GetSlugOk() (*string, bool) {
 func (o *PlatformRequest) SetSlug(v string) {
 	o.Slug = v
 }
+
 
 // GetManufacturer returns the Manufacturer field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PlatformRequest) GetManufacturer() InventoryItemRequestManufacturer {
@@ -131,7 +133,6 @@ func (o *PlatformRequest) HasManufacturer() bool {
 func (o *PlatformRequest) SetManufacturer(v InventoryItemRequestManufacturer) {
 	o.Manufacturer.Set(&v)
 }
-
 // SetManufacturerNil sets the value for Manufacturer to be an explicit nil
 func (o *PlatformRequest) SetManufacturerNil() {
 	o.Manufacturer.Set(nil)
@@ -174,7 +175,6 @@ func (o *PlatformRequest) HasConfigTemplate() bool {
 func (o *PlatformRequest) SetConfigTemplate(v DeviceRoleRequestConfigTemplate) {
 	o.ConfigTemplate.Set(&v)
 }
-
 // SetConfigTemplateNil sets the value for ConfigTemplate to be an explicit nil
 func (o *PlatformRequest) SetConfigTemplateNil() {
 	o.ConfigTemplate.Set(nil)
@@ -282,7 +282,7 @@ func (o *PlatformRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o PlatformRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -327,31 +327,32 @@ func (o *PlatformRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -416,3 +417,5 @@ func (v *NullablePlatformRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

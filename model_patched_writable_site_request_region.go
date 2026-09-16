@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableSiteRequestRegion - struct for PatchedWritableSiteRequestRegion
 type PatchedWritableSiteRequestRegion struct {
 	BriefRegionRequest *BriefRegionRequest
-	Int32              *int32
+	Int32 *int32
 }
 
 // BriefRegionRequestAsPatchedWritableSiteRequestRegion is a convenience function that returns BriefRegionRequest wrapped in PatchedWritableSiteRequestRegion
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableSiteRequestRegion(v *int32) PatchedWritableSiteReques
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableSiteRequestRegion) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedWritableSiteRequestRegion) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *PatchedWritableSiteRequestRegion) GetActualInstance() interface{} {
+func (obj *PatchedWritableSiteRequestRegion) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedWritableSiteRequestRegion) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

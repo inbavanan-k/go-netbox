@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // CircuitRequestType - struct for CircuitRequestType
 type CircuitRequestType struct {
 	BriefCircuitTypeRequest *BriefCircuitTypeRequest
-	Int32                   *int32
+	Int32 *int32
 }
 
 // BriefCircuitTypeRequestAsCircuitRequestType is a convenience function that returns BriefCircuitTypeRequest wrapped in CircuitRequestType
@@ -36,6 +35,7 @@ func Int32AsCircuitRequestType(v *int32) CircuitRequestType {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CircuitRequestType) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src CircuitRequestType) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CircuitRequestType) GetActualInstance() interface{} {
+func (obj *CircuitRequestType) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableCircuitRequestType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

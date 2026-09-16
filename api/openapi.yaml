@@ -134000,7 +134000,6 @@ components:
       - display
       - family
       - id
-      - nat_outside
       - url
     IPAddressRequest:
       type: object
@@ -135013,6 +135012,7 @@ components:
               - 2.5gbase-t
               - 5gbase-t
               - 10gbase-t
+              - 10gbase-sr
               - 10gbase-cx4
               - 100base-x-sfp
               - 1000base-x-gbic
@@ -135138,7 +135138,7 @@ components:
 
                 * `lag` - Link Aggregation Group (LAG)
 
-                * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+                * `100base-fx` - 100BASE-FX (10/100ME)
 
                 * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -135157,6 +135157,8 @@ components:
                 * `5gbase-t` - 5GBASE-T (5GE)
 
                 * `10gbase-t` - 10GBASE-T (10GE)
+
+                * `10gbase-sr` - 10GBASE-SR (10GE)
 
                 * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 
@@ -135400,7 +135402,7 @@ components:
               - Virtual
               - Bridge
               - Link Aggregation Group (LAG)
-              - 100BASE-FX (10/100ME FIBER)
+              - 100BASE-FX (10/100M)
               - 100BASE-LFX (10/100ME FIBER)
               - 100BASE-TX (10/100ME)
               - 100BASE-T1 (10/100ME Single Pair)
@@ -136675,6 +136677,7 @@ components:
           - 2.5gbase-t
           - 5gbase-t
           - 10gbase-t
+          - 10gbase-sr
           - 10gbase-cx4
           - 100base-x-sfp
           - 1000base-x-gbic
@@ -136800,7 +136803,7 @@ components:
 
             * `lag` - Link Aggregation Group (LAG)
 
-            * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+            * `100base-fx` - 100BASE-FX (10/100ME)
 
             * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -136819,6 +136822,8 @@ components:
             * `5gbase-t` - 5GBASE-T (5GE)
 
             * `10gbase-t` - 10GBASE-T (10GE)
+
+            * `10gbase-sr` - 10GBASE-SR (10GE)
 
             * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 
@@ -137899,6 +137904,7 @@ components:
               - 2.5gbase-t
               - 5gbase-t
               - 10gbase-t
+              - 10gbase-sr
               - 10gbase-cx4
               - 100base-x-sfp
               - 1000base-x-gbic
@@ -138024,7 +138030,7 @@ components:
 
                 * `lag` - Link Aggregation Group (LAG)
 
-                * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+                * `100base-fx` - 100BASE-FX (10/100ME)
 
                 * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -138043,6 +138049,8 @@ components:
                 * `5gbase-t` - 5GBASE-T (5GE)
 
                 * `10gbase-t` - 10GBASE-T (10GE)
+
+                * `10gbase-sr` - 10GBASE-SR (10GE)
 
                 * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 
@@ -138286,7 +138294,7 @@ components:
               - Virtual
               - Bridge
               - Link Aggregation Group (LAG)
-              - 100BASE-FX (10/100ME FIBER)
+              - 100BASE-FX (10/100ME)
               - 100BASE-LFX (10/100ME FIBER)
               - 100BASE-TX (10/100ME)
               - 100BASE-T1 (10/100ME Single Pair)
@@ -138569,6 +138577,7 @@ components:
           - 2.5gbase-t
           - 5gbase-t
           - 10gbase-t
+          - 10gbase-sr
           - 10gbase-cx4
           - 100base-x-sfp
           - 1000base-x-gbic
@@ -138694,7 +138703,7 @@ components:
 
             * `lag` - Link Aggregation Group (LAG)
 
-            * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+            * `100base-fx` - 100BASE-FX (10/100ME)
 
             * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -138713,6 +138722,8 @@ components:
             * `5gbase-t` - 5GBASE-T (5GE)
 
             * `10gbase-t` - 10GBASE-T (10GE)
+
+            * `10gbase-sr` - 10GBASE-SR (10GE)
 
             * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 
@@ -150176,6 +150187,7 @@ components:
           - 2.5gbase-t
           - 5gbase-t
           - 10gbase-t
+          - 10gbase-sr
           - 10gbase-cx4
           - 100base-x-sfp
           - 1000base-x-gbic
@@ -150301,7 +150313,7 @@ components:
 
             * `lag` - Link Aggregation Group (LAG)
 
-            * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+            * `100base-fx` - 100BASE-FX (10/100ME)
 
             * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -150320,6 +150332,8 @@ components:
             * `5gbase-t` - 5GBASE-T (5GE)
 
             * `10gbase-t` - 10GBASE-T (10GE)
+
+            * `10gbase-sr` - 10GBASE-SR (10GE)
 
             * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 
@@ -151400,6 +151414,7 @@ components:
           - 2.5gbase-t
           - 5gbase-t
           - 10gbase-t
+          - 10gbase-sr
           - 10gbase-cx4
           - 100base-x-sfp
           - 1000base-x-gbic
@@ -151525,7 +151540,7 @@ components:
 
             * `lag` - Link Aggregation Group (LAG)
 
-            * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+            * `100base-fx` - 100BASE-FX (10/100ME)
 
             * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -151544,6 +151559,8 @@ components:
             * `5gbase-t` - 5GBASE-T (5GE)
 
             * `10gbase-t` - 10GBASE-T (10GE)
+
+            * `10gbase-sr` - 10GBASE-SR (10GE)
 
             * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 
@@ -170451,6 +170468,7 @@ components:
           - 2.5gbase-t
           - 5gbase-t
           - 10gbase-t
+          - 10gbase-sr
           - 10gbase-cx4
           - 100base-x-sfp
           - 1000base-x-gbic
@@ -170576,7 +170594,7 @@ components:
 
             * `lag` - Link Aggregation Group (LAG)
 
-            * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+            * `100base-fx` - 100BASE-FX (10/100ME)
 
             * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -170595,6 +170613,8 @@ components:
             * `5gbase-t` - 5GBASE-T (5GE)
 
             * `10gbase-t` - 10GBASE-T (10GE)
+
+            * `10gbase-sr` - 10GBASE-SR (10GE)
 
             * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 
@@ -171679,6 +171699,7 @@ components:
           - 2.5gbase-t
           - 5gbase-t
           - 10gbase-t
+          - 10gbase-sr
           - 10gbase-cx4
           - 100base-x-sfp
           - 1000base-x-gbic
@@ -171804,7 +171825,7 @@ components:
 
             * `lag` - Link Aggregation Group (LAG)
 
-            * `100base-fx` - 100BASE-FX (10/100ME FIBER)
+            * `100base-fx` - 100BASE-FX (10/100ME)
 
             * `100base-lfx` - 100BASE-LFX (10/100ME FIBER)
 
@@ -171823,6 +171844,8 @@ components:
             * `5gbase-t` - 5GBASE-T (5GE)
 
             * `10gbase-t` - 10GBASE-T (10GE)
+
+            * `10gbase-sr` - 10GBASE-SR (10GE)
 
             * `10gbase-cx4` - 10GBASE-CX4 (10GE)
 

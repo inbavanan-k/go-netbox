@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // BriefModuleTypeRequestProfile - struct for BriefModuleTypeRequestProfile
 type BriefModuleTypeRequestProfile struct {
 	BriefModuleTypeProfileRequest *BriefModuleTypeProfileRequest
-	Int32                         *int32
+	Int32 *int32
 }
 
 // BriefModuleTypeProfileRequestAsBriefModuleTypeRequestProfile is a convenience function that returns BriefModuleTypeProfileRequest wrapped in BriefModuleTypeRequestProfile
@@ -36,6 +35,7 @@ func Int32AsBriefModuleTypeRequestProfile(v *int32) BriefModuleTypeRequestProfil
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *BriefModuleTypeRequestProfile) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src BriefModuleTypeRequestProfile) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *BriefModuleTypeRequestProfile) GetActualInstance() interface{} {
+func (obj *BriefModuleTypeRequestProfile) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableBriefModuleTypeRequestProfile) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

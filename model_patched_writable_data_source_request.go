@@ -19,17 +19,17 @@ var _ MappedNullable = &PatchedWritableDataSourceRequest{}
 
 // PatchedWritableDataSourceRequest Adds support for custom fields and tags.
 type PatchedWritableDataSourceRequest struct {
-	Name         *string                        `json:"name,omitempty"`
-	Type         *string                        `json:"type,omitempty"`
-	SourceUrl    *string                        `json:"source_url,omitempty"`
-	Enabled      *bool                          `json:"enabled,omitempty"`
-	Description  *string                        `json:"description,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Type *string `json:"type,omitempty"`
+	SourceUrl *string `json:"source_url,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Description *string `json:"description,omitempty"`
 	SyncInterval NullableDataSourceSyncInterval `json:"sync_interval,omitempty"`
-	Parameters   interface{}                    `json:"parameters,omitempty"`
+	Parameters interface{} `json:"parameters,omitempty"`
 	// Patterns (one per line) matching files to ignore when syncing
-	IgnoreRules          *string                `json:"ignore_rules,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	IgnoreRules *string `json:"ignore_rules,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -244,7 +244,6 @@ func (o *PatchedWritableDataSourceRequest) HasSyncInterval() bool {
 func (o *PatchedWritableDataSourceRequest) SetSyncInterval(v DataSourceSyncInterval) {
 	o.SyncInterval.Set(&v)
 }
-
 // SetSyncIntervalNil sets the value for SyncInterval to be an explicit nil
 func (o *PatchedWritableDataSourceRequest) SetSyncIntervalNil() {
 	o.SyncInterval.Set(nil)
@@ -385,7 +384,7 @@ func (o *PatchedWritableDataSourceRequest) SetCustomFields(v map[string]interfac
 }
 
 func (o PatchedWritableDataSourceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -497,3 +496,5 @@ func (v *NullablePatchedWritableDataSourceRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

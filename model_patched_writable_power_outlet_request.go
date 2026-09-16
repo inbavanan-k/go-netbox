@@ -19,21 +19,21 @@ var _ MappedNullable = &PatchedWritablePowerOutletRequest{}
 
 // PatchedWritablePowerOutletRequest Adds support for custom fields and tags.
 type PatchedWritablePowerOutletRequest struct {
-	Device *BriefInterfaceRequestDevice     `json:"device,omitempty"`
+	Device *BriefInterfaceRequestDevice `json:"device,omitempty"`
 	Module NullableConsolePortRequestModule `json:"module,omitempty"`
-	Name   *string                          `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Physical label
-	Label       *string                                            `json:"label,omitempty"`
-	Type        NullablePatchedWritablePowerOutletRequestType      `json:"type,omitempty"`
-	Status      *PatchedWritablePowerOutletRequestStatus           `json:"status,omitempty"`
-	Color       *string                                            `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
-	PowerPort   NullablePatchedWritablePowerOutletRequestPowerPort `json:"power_port,omitempty"`
-	FeedLeg     NullablePatchedWritablePowerOutletRequestFeedLeg   `json:"feed_leg,omitempty"`
-	Description *string                                            `json:"description,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Type NullablePatchedWritablePowerOutletRequestType `json:"type,omitempty"`
+	Status *PatchedWritablePowerOutletRequestStatus `json:"status,omitempty"`
+	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
+	PowerPort NullablePatchedWritablePowerOutletRequestPowerPort `json:"power_port,omitempty"`
+	FeedLeg NullablePatchedWritablePowerOutletRequestFeedLeg `json:"feed_leg,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Treat as if a cable is connected
-	MarkConnected        *bool                  `json:"mark_connected,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	MarkConnected *bool `json:"mark_connected,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -120,7 +120,6 @@ func (o *PatchedWritablePowerOutletRequest) HasModule() bool {
 func (o *PatchedWritablePowerOutletRequest) SetModule(v ConsolePortRequestModule) {
 	o.Module.Set(&v)
 }
-
 // SetModuleNil sets the value for Module to be an explicit nil
 func (o *PatchedWritablePowerOutletRequest) SetModuleNil() {
 	o.Module.Set(nil)
@@ -227,7 +226,6 @@ func (o *PatchedWritablePowerOutletRequest) HasType() bool {
 func (o *PatchedWritablePowerOutletRequest) SetType(v PatchedWritablePowerOutletRequestType) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *PatchedWritablePowerOutletRequest) SetTypeNil() {
 	o.Type.Set(nil)
@@ -334,7 +332,6 @@ func (o *PatchedWritablePowerOutletRequest) HasPowerPort() bool {
 func (o *PatchedWritablePowerOutletRequest) SetPowerPort(v PatchedWritablePowerOutletRequestPowerPort) {
 	o.PowerPort.Set(&v)
 }
-
 // SetPowerPortNil sets the value for PowerPort to be an explicit nil
 func (o *PatchedWritablePowerOutletRequest) SetPowerPortNil() {
 	o.PowerPort.Set(nil)
@@ -377,7 +374,6 @@ func (o *PatchedWritablePowerOutletRequest) HasFeedLeg() bool {
 func (o *PatchedWritablePowerOutletRequest) SetFeedLeg(v PatchedWritablePowerOutletRequestFeedLeg) {
 	o.FeedLeg.Set(&v)
 }
-
 // SetFeedLegNil sets the value for FeedLeg to be an explicit nil
 func (o *PatchedWritablePowerOutletRequest) SetFeedLegNil() {
 	o.FeedLeg.Set(nil)
@@ -517,7 +513,7 @@ func (o *PatchedWritablePowerOutletRequest) SetCustomFields(v map[string]interfa
 }
 
 func (o PatchedWritablePowerOutletRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -641,3 +637,5 @@ func (v *NullablePatchedWritablePowerOutletRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

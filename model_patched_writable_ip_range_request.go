@@ -19,20 +19,20 @@ var _ MappedNullable = &PatchedWritableIPRangeRequest{}
 
 // PatchedWritableIPRangeRequest Adds support for custom fields and tags.
 type PatchedWritableIPRangeRequest struct {
-	StartAddress *string                              `json:"start_address,omitempty"`
-	EndAddress   *string                              `json:"end_address,omitempty"`
-	Vrf          NullableIPAddressRequestVrf          `json:"vrf,omitempty"`
-	Tenant       NullableASNRangeRequestTenant        `json:"tenant,omitempty"`
-	Status       *PatchedWritableIPRangeRequestStatus `json:"status,omitempty"`
-	Role         NullableIPRangeRequestRole           `json:"role,omitempty"`
-	Description  *string                              `json:"description,omitempty"`
-	Comments     *string                              `json:"comments,omitempty"`
-	Tags         []NestedTagRequest                   `json:"tags,omitempty"`
-	CustomFields map[string]interface{}               `json:"custom_fields,omitempty"`
+	StartAddress *string `json:"start_address,omitempty"`
+	EndAddress *string `json:"end_address,omitempty"`
+	Vrf NullableIPAddressRequestVrf `json:"vrf,omitempty"`
+	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
+	Status *PatchedWritableIPRangeRequestStatus `json:"status,omitempty"`
+	Role NullableIPRangeRequestRole `json:"role,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	// Prevent the creation of IP addresses within this range
 	MarkPopulated *bool `json:"mark_populated,omitempty"`
 	// Report space as 100% utilized
-	MarkUtilized         *bool `json:"mark_utilized,omitempty"`
+	MarkUtilized *bool `json:"mark_utilized,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -151,7 +151,6 @@ func (o *PatchedWritableIPRangeRequest) HasVrf() bool {
 func (o *PatchedWritableIPRangeRequest) SetVrf(v IPAddressRequestVrf) {
 	o.Vrf.Set(&v)
 }
-
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *PatchedWritableIPRangeRequest) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -194,7 +193,6 @@ func (o *PatchedWritableIPRangeRequest) HasTenant() bool {
 func (o *PatchedWritableIPRangeRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableIPRangeRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -269,7 +267,6 @@ func (o *PatchedWritableIPRangeRequest) HasRole() bool {
 func (o *PatchedWritableIPRangeRequest) SetRole(v IPRangeRequestRole) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *PatchedWritableIPRangeRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -473,7 +470,7 @@ func (o *PatchedWritableIPRangeRequest) SetMarkUtilized(v bool) {
 }
 
 func (o PatchedWritableIPRangeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -593,3 +590,5 @@ func (v *NullablePatchedWritableIPRangeRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -22,16 +22,16 @@ var _ MappedNullable = &VRFRequest{}
 type VRFRequest struct {
 	Name string `json:"name"`
 	// Unique route distinguisher (as defined in RFC 4364)
-	Rd     NullableString                `json:"rd,omitempty"`
+	Rd NullableString `json:"rd,omitempty"`
 	Tenant NullableASNRangeRequestTenant `json:"tenant,omitempty"`
 	// Prevent duplicate prefixes/IP addresses within this VRF
-	EnforceUnique        *bool                  `json:"enforce_unique,omitempty"`
-	Description          *string                `json:"description,omitempty"`
-	Comments             *string                `json:"comments,omitempty"`
-	ImportTargets        []int32                `json:"import_targets,omitempty"`
-	ExportTargets        []int32                `json:"export_targets,omitempty"`
-	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
-	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	EnforceUnique *bool `json:"enforce_unique,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Comments *string `json:"comments,omitempty"`
+	ImportTargets []int32 `json:"import_targets,omitempty"`
+	ExportTargets []int32 `json:"export_targets,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,6 +79,7 @@ func (o *VRFRequest) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetRd returns the Rd field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VRFRequest) GetRd() string {
 	if o == nil || IsNil(o.Rd.Get()) {
@@ -111,7 +112,6 @@ func (o *VRFRequest) HasRd() bool {
 func (o *VRFRequest) SetRd(v string) {
 	o.Rd.Set(&v)
 }
-
 // SetRdNil sets the value for Rd to be an explicit nil
 func (o *VRFRequest) SetRdNil() {
 	o.Rd.Set(nil)
@@ -154,7 +154,6 @@ func (o *VRFRequest) HasTenant() bool {
 func (o *VRFRequest) SetTenant(v ASNRangeRequestTenant) {
 	o.Tenant.Set(&v)
 }
-
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *VRFRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -390,7 +389,7 @@ func (o *VRFRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o VRFRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -445,31 +444,32 @@ func (o *VRFRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -537,3 +537,5 @@ func (v *NullableVRFRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

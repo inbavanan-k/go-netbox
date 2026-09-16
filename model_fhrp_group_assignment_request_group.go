@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // FHRPGroupAssignmentRequestGroup - struct for FHRPGroupAssignmentRequestGroup
 type FHRPGroupAssignmentRequestGroup struct {
 	BriefFHRPGroupRequest *BriefFHRPGroupRequest
-	Int32                 *int32
+	Int32 *int32
 }
 
 // BriefFHRPGroupRequestAsFHRPGroupAssignmentRequestGroup is a convenience function that returns BriefFHRPGroupRequest wrapped in FHRPGroupAssignmentRequestGroup
@@ -36,6 +35,7 @@ func Int32AsFHRPGroupAssignmentRequestGroup(v *int32) FHRPGroupAssignmentRequest
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FHRPGroupAssignmentRequestGroup) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src FHRPGroupAssignmentRequestGroup) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *FHRPGroupAssignmentRequestGroup) GetActualInstance() interface{} {
+func (obj *FHRPGroupAssignmentRequestGroup) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableFHRPGroupAssignmentRequestGroup) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

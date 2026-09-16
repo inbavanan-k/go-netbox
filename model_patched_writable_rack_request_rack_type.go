@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableRackRequestRackType - struct for PatchedWritableRackRequestRackType
 type PatchedWritableRackRequestRackType struct {
 	BriefRackTypeRequest *BriefRackTypeRequest
-	Int32                *int32
+	Int32 *int32
 }
 
 // BriefRackTypeRequestAsPatchedWritableRackRequestRackType is a convenience function that returns BriefRackTypeRequest wrapped in PatchedWritableRackRequestRackType
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableRackRequestRackType(v *int32) PatchedWritableRackRequ
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableRackRequestRackType) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedWritableRackRequestRackType) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *PatchedWritableRackRequestRackType) GetActualInstance() interface{} {
+func (obj *PatchedWritableRackRequestRackType) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedWritableRackRequestRackType) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

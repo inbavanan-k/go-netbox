@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // BriefVirtualCircuitRequestProviderNetwork - struct for BriefVirtualCircuitRequestProviderNetwork
 type BriefVirtualCircuitRequestProviderNetwork struct {
 	BriefProviderNetworkRequest *BriefProviderNetworkRequest
-	Int32                       *int32
+	Int32 *int32
 }
 
 // BriefProviderNetworkRequestAsBriefVirtualCircuitRequestProviderNetwork is a convenience function that returns BriefProviderNetworkRequest wrapped in BriefVirtualCircuitRequestProviderNetwork
@@ -36,6 +35,7 @@ func Int32AsBriefVirtualCircuitRequestProviderNetwork(v *int32) BriefVirtualCirc
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *BriefVirtualCircuitRequestProviderNetwork) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src BriefVirtualCircuitRequestProviderNetwork) MarshalJSON() ([]byte, erro
 }
 
 // Get the actual instance
-func (obj *BriefVirtualCircuitRequestProviderNetwork) GetActualInstance() interface{} {
+func (obj *BriefVirtualCircuitRequestProviderNetwork) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableBriefVirtualCircuitRequestProviderNetwork) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

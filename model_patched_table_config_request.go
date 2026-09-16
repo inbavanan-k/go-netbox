@@ -19,16 +19,16 @@ var _ MappedNullable = &PatchedTableConfigRequest{}
 
 // PatchedTableConfigRequest Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type PatchedTableConfigRequest struct {
-	ObjectType           *string       `json:"object_type,omitempty"`
-	Table                *string       `json:"table,omitempty"`
-	Name                 *string       `json:"name,omitempty"`
-	Description          *string       `json:"description,omitempty"`
-	User                 NullableInt32 `json:"user,omitempty"`
-	Weight               *int32        `json:"weight,omitempty"`
-	Enabled              *bool         `json:"enabled,omitempty"`
-	Shared               *bool         `json:"shared,omitempty"`
-	Columns              []string      `json:"columns,omitempty"`
-	Ordering             []string      `json:"ordering,omitempty"`
+	ObjectType *string `json:"object_type,omitempty"`
+	Table *string `json:"table,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	User NullableInt32 `json:"user,omitempty"`
+	Weight *int32 `json:"weight,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Shared *bool `json:"shared,omitempty"`
+	Columns []string `json:"columns,omitempty"`
+	Ordering []string `json:"ordering,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -211,7 +211,6 @@ func (o *PatchedTableConfigRequest) HasUser() bool {
 func (o *PatchedTableConfigRequest) SetUser(v int32) {
 	o.User.Set(&v)
 }
-
 // SetUserNil sets the value for User to be an explicit nil
 func (o *PatchedTableConfigRequest) SetUserNil() {
 	o.User.Set(nil)
@@ -384,7 +383,7 @@ func (o *PatchedTableConfigRequest) SetOrdering(v []string) {
 }
 
 func (o PatchedTableConfigRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -496,3 +495,5 @@ func (v *NullablePatchedTableConfigRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

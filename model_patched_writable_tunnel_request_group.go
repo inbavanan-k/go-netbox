@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableTunnelRequestGroup - struct for PatchedWritableTunnelRequestGroup
 type PatchedWritableTunnelRequestGroup struct {
 	BriefTunnelGroupRequest *BriefTunnelGroupRequest
-	Int32                   *int32
+	Int32 *int32
 }
 
 // BriefTunnelGroupRequestAsPatchedWritableTunnelRequestGroup is a convenience function that returns BriefTunnelGroupRequest wrapped in PatchedWritableTunnelRequestGroup
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableTunnelRequestGroup(v *int32) PatchedWritableTunnelReq
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableTunnelRequestGroup) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedWritableTunnelRequestGroup) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *PatchedWritableTunnelRequestGroup) GetActualInstance() interface{} {
+func (obj *PatchedWritableTunnelRequestGroup) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedWritableTunnelRequestGroup) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritableTunnelRequestIpsecProfile - struct for PatchedWritableTunnelRequestIpsecProfile
 type PatchedWritableTunnelRequestIpsecProfile struct {
 	BriefIPSecProfileRequest *BriefIPSecProfileRequest
-	Int32                    *int32
+	Int32 *int32
 }
 
 // BriefIPSecProfileRequestAsPatchedWritableTunnelRequestIpsecProfile is a convenience function that returns BriefIPSecProfileRequest wrapped in PatchedWritableTunnelRequestIpsecProfile
@@ -36,6 +35,7 @@ func Int32AsPatchedWritableTunnelRequestIpsecProfile(v *int32) PatchedWritableTu
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritableTunnelRequestIpsecProfile) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src PatchedWritableTunnelRequestIpsecProfile) MarshalJSON() ([]byte, error
 }
 
 // Get the actual instance
-func (obj *PatchedWritableTunnelRequestIpsecProfile) GetActualInstance() interface{} {
+func (obj *PatchedWritableTunnelRequestIpsecProfile) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullablePatchedWritableTunnelRequestIpsecProfile) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

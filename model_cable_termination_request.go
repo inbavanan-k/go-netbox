@@ -20,10 +20,10 @@ var _ MappedNullable = &CableTerminationRequest{}
 
 // CableTerminationRequest Adds support for custom fields and tags.
 type CableTerminationRequest struct {
-	Cable                int32  `json:"cable"`
-	CableEnd             *End1  `json:"cable_end,omitempty"`
-	TerminationType      string `json:"termination_type"`
-	TerminationId        int64  `json:"termination_id"`
+	Cable int32 `json:"cable"`
+	CableEnd *End1 `json:"cable_end,omitempty"`
+	TerminationType string `json:"termination_type"`
+	TerminationId int64 `json:"termination_id"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,6 +72,7 @@ func (o *CableTerminationRequest) GetCableOk() (*int32, bool) {
 func (o *CableTerminationRequest) SetCable(v int32) {
 	o.Cable = v
 }
+
 
 // GetCableEnd returns the CableEnd field value if set, zero value otherwise.
 func (o *CableTerminationRequest) GetCableEnd() End1 {
@@ -129,6 +130,7 @@ func (o *CableTerminationRequest) SetTerminationType(v string) {
 	o.TerminationType = v
 }
 
+
 // GetTerminationId returns the TerminationId field value
 func (o *CableTerminationRequest) GetTerminationId() int64 {
 	if o == nil {
@@ -153,8 +155,9 @@ func (o *CableTerminationRequest) SetTerminationId(v int64) {
 	o.TerminationId = v
 }
 
+
 func (o CableTerminationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,31 +192,32 @@ func (o *CableTerminationRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{}{}
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -275,3 +279,5 @@ func (v *NullableCableTerminationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // BriefL2VPNTerminationRequestL2vpn - struct for BriefL2VPNTerminationRequestL2vpn
 type BriefL2VPNTerminationRequestL2vpn struct {
 	BriefL2VPNRequest *BriefL2VPNRequest
-	Int32             *int32
+	Int32 *int32
 }
 
 // BriefL2VPNRequestAsBriefL2VPNTerminationRequestL2vpn is a convenience function that returns BriefL2VPNRequest wrapped in BriefL2VPNTerminationRequestL2vpn
@@ -36,6 +35,7 @@ func Int32AsBriefL2VPNTerminationRequestL2vpn(v *int32) BriefL2VPNTerminationReq
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *BriefL2VPNTerminationRequestL2vpn) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src BriefL2VPNTerminationRequestL2vpn) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *BriefL2VPNTerminationRequestL2vpn) GetActualInstance() interface{} {
+func (obj *BriefL2VPNTerminationRequestL2vpn) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableBriefL2VPNTerminationRequestL2vpn) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

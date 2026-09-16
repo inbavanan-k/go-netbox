@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // BriefCircuitRequestProvider - struct for BriefCircuitRequestProvider
 type BriefCircuitRequestProvider struct {
 	BriefProviderRequest *BriefProviderRequest
-	Int32                *int32
+	Int32 *int32
 }
 
 // BriefProviderRequestAsBriefCircuitRequestProvider is a convenience function that returns BriefProviderRequest wrapped in BriefCircuitRequestProvider
@@ -36,6 +35,7 @@ func Int32AsBriefCircuitRequestProvider(v *int32) BriefCircuitRequestProvider {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *BriefCircuitRequestProvider) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src BriefCircuitRequestProvider) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *BriefCircuitRequestProvider) GetActualInstance() interface{} {
+func (obj *BriefCircuitRequestProvider) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullableBriefCircuitRequestProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

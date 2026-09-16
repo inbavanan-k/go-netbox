@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ConsolePortTemplateRequestDeviceType - struct for ConsolePortTemplateRequestDeviceType
 type ConsolePortTemplateRequestDeviceType struct {
 	BriefDeviceTypeRequest *BriefDeviceTypeRequest
-	Int32                  *int32
+	Int32 *int32
 }
 
 // BriefDeviceTypeRequestAsConsolePortTemplateRequestDeviceType is a convenience function that returns BriefDeviceTypeRequest wrapped in ConsolePortTemplateRequestDeviceType
@@ -36,6 +35,7 @@ func Int32AsConsolePortTemplateRequestDeviceType(v *int32) ConsolePortTemplateRe
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ConsolePortTemplateRequestDeviceType) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src ConsolePortTemplateRequestDeviceType) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ConsolePortTemplateRequestDeviceType) GetActualInstance() interface{} {
+func (obj *ConsolePortTemplateRequestDeviceType) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableConsolePortTemplateRequestDeviceType) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

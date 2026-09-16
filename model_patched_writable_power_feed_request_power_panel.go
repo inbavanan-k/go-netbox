@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PatchedWritablePowerFeedRequestPowerPanel - struct for PatchedWritablePowerFeedRequestPowerPanel
 type PatchedWritablePowerFeedRequestPowerPanel struct {
 	BriefPowerPanelRequest *BriefPowerPanelRequest
-	Int32                  *int32
+	Int32 *int32
 }
 
 // BriefPowerPanelRequestAsPatchedWritablePowerFeedRequestPowerPanel is a convenience function that returns BriefPowerPanelRequest wrapped in PatchedWritablePowerFeedRequestPowerPanel
@@ -36,6 +35,7 @@ func Int32AsPatchedWritablePowerFeedRequestPowerPanel(v *int32) PatchedWritableP
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PatchedWritablePowerFeedRequestPowerPanel) UnmarshalJSON(data []byte) error {
@@ -102,7 +102,7 @@ func (src PatchedWritablePowerFeedRequestPowerPanel) MarshalJSON() ([]byte, erro
 }
 
 // Get the actual instance
-func (obj *PatchedWritablePowerFeedRequestPowerPanel) GetActualInstance() interface{} {
+func (obj *PatchedWritablePowerFeedRequestPowerPanel) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -153,3 +153,5 @@ func (v *NullablePatchedWritablePowerFeedRequestPowerPanel) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

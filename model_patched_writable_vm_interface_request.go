@@ -19,23 +19,23 @@ var _ MappedNullable = &PatchedWritableVMInterfaceRequest{}
 
 // PatchedWritableVMInterfaceRequest Adds support for custom fields and tags.
 type PatchedWritableVMInterfaceRequest struct {
-	VirtualMachine        *PatchedVirtualDiskRequestVirtualMachine      `json:"virtual_machine,omitempty"`
-	Name                  *string                                       `json:"name,omitempty"`
-	Enabled               *bool                                         `json:"enabled,omitempty"`
-	Parent                NullableInt32                                 `json:"parent,omitempty"`
-	Bridge                NullableInt32                                 `json:"bridge,omitempty"`
-	Mtu                   NullableInt32                                 `json:"mtu,omitempty"`
-	PrimaryMacAddress     NullableInterfaceRequestPrimaryMacAddress     `json:"primary_mac_address,omitempty"`
-	Description           *string                                       `json:"description,omitempty"`
-	Mode                  NullablePatchedWritableInterfaceRequestMode   `json:"mode,omitempty"`
-	UntaggedVlan          NullableInterfaceRequestUntaggedVlan          `json:"untagged_vlan,omitempty"`
-	TaggedVlans           []int32                                       `json:"tagged_vlans,omitempty"`
-	QinqSvlan             NullableInterfaceRequestUntaggedVlan          `json:"qinq_svlan,omitempty"`
+	VirtualMachine *PatchedVirtualDiskRequestVirtualMachine `json:"virtual_machine,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Parent NullableInt32 `json:"parent,omitempty"`
+	Bridge NullableInt32 `json:"bridge,omitempty"`
+	Mtu NullableInt32 `json:"mtu,omitempty"`
+	PrimaryMacAddress NullableInterfaceRequestPrimaryMacAddress `json:"primary_mac_address,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Mode NullablePatchedWritableInterfaceRequestMode `json:"mode,omitempty"`
+	UntaggedVlan NullableInterfaceRequestUntaggedVlan `json:"untagged_vlan,omitempty"`
+	TaggedVlans []int32 `json:"tagged_vlans,omitempty"`
+	QinqSvlan NullableInterfaceRequestUntaggedVlan `json:"qinq_svlan,omitempty"`
 	VlanTranslationPolicy NullableInterfaceRequestVlanTranslationPolicy `json:"vlan_translation_policy,omitempty"`
-	Vrf                   NullableIPAddressRequestVrf                   `json:"vrf,omitempty"`
-	Tags                  []NestedTagRequest                            `json:"tags,omitempty"`
-	CustomFields          map[string]interface{}                        `json:"custom_fields,omitempty"`
-	AdditionalProperties  map[string]interface{}
+	Vrf NullableIPAddressRequestVrf `json:"vrf,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
+	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PatchedWritableVMInterfaceRequest PatchedWritableVMInterfaceRequest
@@ -185,7 +185,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasParent() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
-
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -228,7 +227,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasBridge() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetBridge(v int32) {
 	o.Bridge.Set(&v)
 }
-
 // SetBridgeNil sets the value for Bridge to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetBridgeNil() {
 	o.Bridge.Set(nil)
@@ -271,7 +269,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasMtu() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetMtu(v int32) {
 	o.Mtu.Set(&v)
 }
-
 // SetMtuNil sets the value for Mtu to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetMtuNil() {
 	o.Mtu.Set(nil)
@@ -314,7 +311,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasPrimaryMacAddress() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetPrimaryMacAddress(v InterfaceRequestPrimaryMacAddress) {
 	o.PrimaryMacAddress.Set(&v)
 }
-
 // SetPrimaryMacAddressNil sets the value for PrimaryMacAddress to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetPrimaryMacAddressNil() {
 	o.PrimaryMacAddress.Set(nil)
@@ -389,7 +385,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasMode() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetMode(v PatchedWritableInterfaceRequestMode) {
 	o.Mode.Set(&v)
 }
-
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetModeNil() {
 	o.Mode.Set(nil)
@@ -432,7 +427,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasUntaggedVlan() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetUntaggedVlan(v InterfaceRequestUntaggedVlan) {
 	o.UntaggedVlan.Set(&v)
 }
-
 // SetUntaggedVlanNil sets the value for UntaggedVlan to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetUntaggedVlanNil() {
 	o.UntaggedVlan.Set(nil)
@@ -507,7 +501,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasQinqSvlan() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetQinqSvlan(v InterfaceRequestUntaggedVlan) {
 	o.QinqSvlan.Set(&v)
 }
-
 // SetQinqSvlanNil sets the value for QinqSvlan to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetQinqSvlanNil() {
 	o.QinqSvlan.Set(nil)
@@ -550,7 +543,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasVlanTranslationPolicy() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetVlanTranslationPolicy(v InterfaceRequestVlanTranslationPolicy) {
 	o.VlanTranslationPolicy.Set(&v)
 }
-
 // SetVlanTranslationPolicyNil sets the value for VlanTranslationPolicy to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetVlanTranslationPolicyNil() {
 	o.VlanTranslationPolicy.Set(nil)
@@ -593,7 +585,6 @@ func (o *PatchedWritableVMInterfaceRequest) HasVrf() bool {
 func (o *PatchedWritableVMInterfaceRequest) SetVrf(v IPAddressRequestVrf) {
 	o.Vrf.Set(&v)
 }
-
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *PatchedWritableVMInterfaceRequest) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -669,7 +660,7 @@ func (o *PatchedWritableVMInterfaceRequest) SetCustomFields(v map[string]interfa
 }
 
 func (o PatchedWritableVMInterfaceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -805,3 +796,5 @@ func (v *NullablePatchedWritableVMInterfaceRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

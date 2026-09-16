@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // DeviceBayRequestInstalledDevice - struct for DeviceBayRequestInstalledDevice
 type DeviceBayRequestInstalledDevice struct {
 	BriefDeviceRequest *BriefDeviceRequest
-	Int32              *int32
+	Int32 *int32
 }
 
 // BriefDeviceRequestAsDeviceBayRequestInstalledDevice is a convenience function that returns BriefDeviceRequest wrapped in DeviceBayRequestInstalledDevice
@@ -36,6 +35,7 @@ func Int32AsDeviceBayRequestInstalledDevice(v *int32) DeviceBayRequestInstalledD
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceBayRequestInstalledDevice) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src DeviceBayRequestInstalledDevice) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceBayRequestInstalledDevice) GetActualInstance() interface{} {
+func (obj *DeviceBayRequestInstalledDevice) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableDeviceBayRequestInstalledDevice) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

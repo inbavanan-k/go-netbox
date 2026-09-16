@@ -12,15 +12,14 @@ package netbox
 
 import (
 	"encoding/json"
-	"fmt"
-
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ASNRequestRir - struct for ASNRequestRir
 type ASNRequestRir struct {
 	BriefRIRRequest *BriefRIRRequest
-	Int32           *int32
+	Int32 *int32
 }
 
 // BriefRIRRequestAsASNRequestRir is a convenience function that returns BriefRIRRequest wrapped in ASNRequestRir
@@ -36,6 +35,7 @@ func Int32AsASNRequestRir(v *int32) ASNRequestRir {
 		Int32: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ASNRequestRir) UnmarshalJSON(data []byte) error {
@@ -107,7 +107,7 @@ func (src ASNRequestRir) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ASNRequestRir) GetActualInstance() interface{} {
+func (obj *ASNRequestRir) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -158,3 +158,5 @@ func (v *NullableASNRequestRir) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

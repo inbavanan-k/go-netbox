@@ -19,11 +19,11 @@ var _ MappedNullable = &PatchedWritableCircuitGroupAssignmentRequest{}
 
 // PatchedWritableCircuitGroupAssignmentRequest Base serializer for group assignments under CircuitSerializer.
 type PatchedWritableCircuitGroupAssignmentRequest struct {
-	Group                *BriefCircuitGroupAssignmentSerializerRequestGroup           `json:"group,omitempty"`
-	MemberType           *string                                                      `json:"member_type,omitempty"`
-	MemberId             *int64                                                       `json:"member_id,omitempty"`
-	Priority             NullablePatchedWritableCircuitGroupAssignmentRequestPriority `json:"priority,omitempty"`
-	Tags                 []NestedTagRequest                                           `json:"tags,omitempty"`
+	Group *BriefCircuitGroupAssignmentSerializerRequestGroup `json:"group,omitempty"`
+	MemberType *string `json:"member_type,omitempty"`
+	MemberId *int64 `json:"member_id,omitempty"`
+	Priority NullablePatchedWritableCircuitGroupAssignmentRequestPriority `json:"priority,omitempty"`
+	Tags []NestedTagRequest `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -174,7 +174,6 @@ func (o *PatchedWritableCircuitGroupAssignmentRequest) HasPriority() bool {
 func (o *PatchedWritableCircuitGroupAssignmentRequest) SetPriority(v PatchedWritableCircuitGroupAssignmentRequestPriority) {
 	o.Priority.Set(&v)
 }
-
 // SetPriorityNil sets the value for Priority to be an explicit nil
 func (o *PatchedWritableCircuitGroupAssignmentRequest) SetPriorityNil() {
 	o.Priority.Set(nil)
@@ -218,7 +217,7 @@ func (o *PatchedWritableCircuitGroupAssignmentRequest) SetTags(v []NestedTagRequ
 }
 
 func (o PatchedWritableCircuitGroupAssignmentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -310,3 +309,5 @@ func (v *NullablePatchedWritableCircuitGroupAssignmentRequest) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
