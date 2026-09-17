@@ -23,6 +23,7 @@ const (
 	INTERFACETYPELABEL_VIRTUAL                             InterfaceTypeLabel = "Virtual"
 	INTERFACETYPELABEL_BRIDGE                              InterfaceTypeLabel = "Bridge"
 	INTERFACETYPELABEL_LINK_AGGREGATION_GROUP__LAG         InterfaceTypeLabel = "Link Aggregation Group (LAG)"
+	INTERFACETYPELABEL__100_BASE_FX__10_100_ME             InterfaceTypeLabel = "100BASE-FX (10/100ME)"
 	INTERFACETYPELABEL__100_BASE_FX__10_100_ME_FIBER       InterfaceTypeLabel = "100BASE-FX (10/100ME FIBER)"
 	INTERFACETYPELABEL__100_BASE_LFX__10_100_ME_FIBER      InterfaceTypeLabel = "100BASE-LFX (10/100ME FIBER)"
 	INTERFACETYPELABEL__100_BASE_TX__10_100_ME             InterfaceTypeLabel = "100BASE-TX (10/100ME)"
@@ -33,6 +34,7 @@ const (
 	INTERFACETYPELABEL__2_5_GBASE_T__2_5_GE                InterfaceTypeLabel = "2.5GBASE-T (2.5GE)"
 	INTERFACETYPELABEL__5_GBASE_T__5_GE                    InterfaceTypeLabel = "5GBASE-T (5GE)"
 	INTERFACETYPELABEL__10_GBASE_T__10_GE                  InterfaceTypeLabel = "10GBASE-T (10GE)"
+	INTERFACETYPELABEL__10_GBASE_SR__10_GE                 InterfaceTypeLabel = "10GBASE-SR (10GE)"
 	INTERFACETYPELABEL__10_GBASE_CX4__10_GE                InterfaceTypeLabel = "10GBASE-CX4 (10GE)"
 	INTERFACETYPELABEL_SFP__100_ME                         InterfaceTypeLabel = "SFP (100ME)"
 	INTERFACETYPELABEL_GBIC__1_GE                          InterfaceTypeLabel = "GBIC (1GE)"
@@ -158,6 +160,7 @@ var AllowedInterfaceTypeLabelEnumValues = []InterfaceTypeLabel{
 	"Virtual",
 	"Bridge",
 	"Link Aggregation Group (LAG)",
+	"100BASE-FX (10/100ME)",
 	"100BASE-FX (10/100ME FIBER)",
 	"100BASE-LFX (10/100ME FIBER)",
 	"100BASE-TX (10/100ME)",
@@ -168,6 +171,7 @@ var AllowedInterfaceTypeLabelEnumValues = []InterfaceTypeLabel{
 	"2.5GBASE-T (2.5GE)",
 	"5GBASE-T (5GE)",
 	"10GBASE-T (10GE)",
+	"10GBASE-SR (10GE)",
 	"10GBASE-CX4 (10GE)",
 	"SFP (100ME)",
 	"GBIC (1GE)",
